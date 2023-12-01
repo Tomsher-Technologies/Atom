@@ -13,6 +13,7 @@ use App\Models\HomeSliders;
 use App\Models\TrainingCourses;
 use App\Models\Faq;
 use App\Models\Reviews;
+use App\Models\States;
 use App\Models\TrainingCategories;
 use App\Models\Product\ProductCategory;
 use Illuminate\Http\Request;
@@ -264,4 +265,18 @@ function getFaq(){
 
 function getCourseReviews(){
     return Reviews::where('status',1)->orderBy('sort_order','asc')->get();
+}
+
+function getCourseLocations(){
+    // DB::enableQueryLog();
+    $locations = Cache::remember('search_locations', 86400, function () {
+        $location_ids = TrainingCourses::select('location_id')->distinct()->pluck('location_id')->toArray();
+        // dd(DB::getQueryLog());
+        $locations =  [];
+        if(!empty($location_ids)){
+            $locations = States::whereIn('id', $location_ids)->get()->toArray();
+        }
+        return $locations;
+    });
+    return $locations;
 }
