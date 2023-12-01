@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/base.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/vendors.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>ATOM</title>
+</head>
+
+<body class="preloader-visible" data-barba="wrapper">
+    <!-- preloader start -->
+    <div class="preloader js-preloader">
+        <div class="preloader__bg"></div>
+    </div>
+    <!-- preloader end -->
+
+
+    <main class="main-content  ">
+
+        <header data-anim="fade" data-add-bg="bg-dark-1" class="header -type-1 js-header">
+
+
+            <div class="header__container">
+                <div class="row justify-between items-center">
+
+                    <div class="col-auto">
+                        <div class="header-left">
+
+                            <div class="header__logo ">
+                                <a data-barba href="index.html">
+                                    <img width="150" src="img/logo-b.png" alt="logo">
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="header-menu js-mobile-menu-toggle ">
+                        <div class="header-menu__content">
+                            <div class="mobile-bg js-mobile-bg"></div>
+
+
+
+                            <div class="menu js-navList">
+                                <ul class="menu__nav text-black -is-active">
+                                    <li>
+                                        <a data-barba href="">Home</a>
+                                    </li>
+
+                                    <li class="menu-item-has-children -has-mega-menu">
+                                        <a data-barba href="#">ABOUT <i
+                                                class="icon-chevron-right text-13 ml-10"></i></a>
+
+
+                                        <div class="mega xl:d-none">
+                                            <div class="mega__menu">
+                                                <div class="row x-gap-40">
+
+                                                    <div class="col-lg-4">
+                                                        <div class="about-mega-sec-1">
+                                                            <h2>Explore how we can help you overcome your operational
+                                                                challenges and achieve your
+                                                                business goals.
+                                                            </h2>
+                                                            <a class="pt-30" href="">More in Topics</a>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-lg-4">
+                                                        <div class="about-mega-sec-2">
+                                                            <h4 class="text-17 fw-500 mb-20 text-white">About Atom</h4>
+
+                                                            <ul class="mega__list">
+
+                                                                <li><a data-barba href="">Who we are</a></li>
+
+                                                                <li><a data-barba href="">Mission Vision</a></li>
+
+                                                                <li><a data-barba href="">Partners & clients</a></li>
+
+                                                                <li><a data-barba href="">Career</a></li>
+
+                                                                <li><a data-barba href="">Contact Us</a></li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-lg-4">
+
+
+                                                        <div class="mega-banner ml-40">
+                                                            <img src="img/blog1.jpg" alt="">
+
+                                                            <a href="" class="blog-title">Elevate Your Aviation Strategy
+                                                                with
+                                                                Expert Guidance </a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+
+                                        <ul class="subnav d-none xl:d-block">
+                                            <li class="menu__backButton js-nav-list-back">
+                                                <a href="#"><i class="icon-chevron-left text-13 mr-10"></i> About
+                                                    Atom</a>
+                                            </li>
+
+
+                                            <li><a data-barba href="">Who we are</a></li>
+
+                                            <li><a data-barba href="">Mission Vision</a></li>
+
+                                            <li><a data-barba href="">Partners & clients</a></li>
+
+                                            <li><a data-barba href="">Career</a></li>
+
+                                            <li><a data-barba href="">Contact Us</a></li>
+
+                                        </ul>
+                                    </li>
+
+
+                                    <li class="menu-item-has-children -has-mega-menu">
+                                        <a data-barba href="#">PROGRAMS <i
+                                                class="icon-chevron-right text-13 ml-10"></i></a>
+
+
+                                        <div class="mega xl:d-none">
+                                            <div class="mega__menu">
+                                                <div class="row x-gap-40">
+
+                                                    <div class="col-lg-4">
+                                                        <div class="about-mega-sec-1">
+                                                            <h2>Explore how we can help you overcome your operational
+                                                                challenges and achieve your
+                                                                business goals.
+                                                            </h2>
+                                                            <a class="pt-30" href="">More in Topics</a>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-lg-4">
+                                                        <div class="about-mega-sec-2">
+                                                            <h4 class="text-17 fw-500 mb-20 text-white"> Programs</h4>
+
+                                                            <ul class="mega__list">
+                                                                <li><a data-barba href="">Civil Aviation Training</a>
+                                                                </li>
+                                                                <li><a data-barba href="">Military Aviation Training</a>
+                                                                </li>
+                                                                <li><a data-barba href="">Management Training</a></li>
+                                                                <li><a data-barba href="">Oil & Gas Training</a></li>
+                                                                <li><a data-barba href="">Technical Training</a></li>
+
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4">
+                                                        <div class="about-mega-sec-2">
+                                                            <h4 class="text-17 fw-500 mb-20 text-white"> Programs</h4>
+
+                                                            <ul class="mega__list">
+                                                                <li><a data-barba href="">Civil Aviation Training</a>
+                                                                </li>
+                                                                <li><a data-barba href="">Military Aviation Training</a>
+                                                                </li>
+                                                                <li><a data-barba href="">Management Training</a></li>
+                                                                <li><a data-barba href="">Oil & Gas Training</a></li>
+                                                                <li><a data-barba href="">Technical Training</a></li>
+
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+
+                                        <ul class="subnav d-none xl:d-block">
+                                            <li class="menu__backButton js-nav-list-back">
+                                                <a href="#"><i class="icon-chevron-left text-13 mr-10"></i> Services</a>
+                                            </li>
+
+                                            <li><a data-barba href="">Consulting Solutions</a></li>
+                                            <li><a data-barba href="">Executive Coaching</a></li>
+                                            <li><a data-barba href="">Meirc Talent Tool (MTT)</a></li>
+
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a data-barba href="">OPPORTUNITIES</a>
+                                    </li>
+
+                                    <li>
+                                        <a data-barba href="">MEDIA CENTER</a>
+                                    </li>
+                                    <li>
+                                        <a data-barba href="">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mobile-footer px-20 py-20 border-top-light js-mobile-footer">
+                                <div class="mobile-footer__number">
+                                    <div class="text-17 fw-500 text-dark-1">Call us</div>
+                                    <div class="text-17 fw-500 text-purple-1">+971 – 42516661</div>
+                                </div>
+
+                                <div class="lh-2 mt-10">
+                                    <div>Bayview tower Floor 19 Business Bay-Dubai-UAE</div>
+                                    <div>atom@atomtci.expert</div>
+                                </div>
+
+                                <div class="mobile-socials mt-10">
+
+                                    <a href="#" class="d-flex items-center justify-center rounded-full size-40">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+
+                                    <a href="#" class="d-flex items-center justify-center rounded-full size-40">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+
+                                    <a href="#" class="d-flex items-center justify-center rounded-full size-40">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+
+                                    <a href="#" class="d-flex items-center justify-center rounded-full size-40">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="header-menu-close" data-el-toggle=".js-mobile-menu-toggle">
+                            <div class="size-40 d-flex items-center justify-center rounded-full bg-white">
+                                <div class="icon-close text-dark-1 text-16"></div>
+                            </div>
+                        </div>
+
+                        <div class="header-menu-bg"></div>
+                    </div>
+
+
+
+
+                    <div class="col-auto">
+                        <div class="header-right d-flex items-center">
+                            <div class="header-right__icons text-white d-flex items-center">
+
+
+
+
+
+                                <div class="d-none xl:d-block ml-20">
+                                    <button class="text-white items-center" data-el-toggle=".js-mobile-menu-toggle">
+                                        <i class="text-11 icon icon-mobile-menu"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div class="header-right__buttons d-flex items-center ml-30 md:d-none">
+
+                                <a href="signup.html"
+                                    class="button px-35 h-40 -gradient-1 text-white -rounded ml-30 xl:ml-20">CALL ME
+                                    BACK</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+
+        <div class="content-wrapper  js-content-wrapper">
+
+
+
+
+            <section data-anim-wrap class="masthead -type-2">
+                <div class="masthead__bg">
+                    <div class="bg-image js-lazy" data-bg="img/bg-22.jpg"></div>
+                </div>
+
+                <div class="container">
+                    <div class="row y-gap-50 justify-center items-center">
+                        <div class="col-xl-6 col-lg-11">
+                            <div class="masthead__content">   
+                                <div data-anim-child="slide-up delay-2" class="masthead__subtitle fw-500 text-white text-20 lh-15">
+                                    Mission Vision
+                                  </div>                     
+                                <h1 data-anim-child="slide-up delay-3" class="masthead__title text-white mt-10">
+                                    Navigating Succes, <br>
+                                    Transforming Futures
+                                </h1>
+
+                             
+                  
+                               
+                            </div>
+                        </div>
+
+                        <div class="col-xl-5 col-lg-11">
+
+                            <p data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white mt-25 lh-16">
+                              
+                              </p>
+                    
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+            <section class="layout-pt-md layout-pb-md">
+                <div class="container">
+                  <div class="row y-gap-30 items-center">
+                    <div class="col-xl-5 offset-xl-1 col-lg-6">
+                      <img class="w-1/1" src="img/Mission.png" alt="image">
+                    </div>
+        
+                    <div class="col-xl-4 offset-xl-1 col-lg-6">
+                      <h3 class="text-24 lh-1">ATOM Mission</h3>
+                      <p class="mt-20">Our mission at ATOM Aviation Training Services is to lead the aviation training industry by providing comprehensive, quality training programs and consultancy services. We are dedicated to equipping aviation professionals with the knowledge, skills, and safety standards required for success in the dynamic and evolving aviation sector. Through our commitment to excellence, innovation, and continuous improvement, we aim to empower and advance the global aviation community</p>
+          
+                    </div>
+                  </div>
+                </div>
+              </section>
+        
+       
+
+
+
+
+
+            <section class="hom-vd layout-pt-lg layout-pb-lg mb-90 section-bg">
+                <!-- <div class="section-bg__item bg-dark-1" style="background-image: url(img/Training-bg.jpg);"></div> -->
+
+                <div class="video-container"
+                    style="position: absolute;width: 98%;left: 1%; right: 1%;top: 0;height: 100%;z-index: -1;border-radius: 20px; overflow: hidden;">
+                    <div class="vid-overlay"></div>
+                    <video class="m-auto w-100 h-100" loop="" muted="" autoplay poster="img/bg-22.jpg"
+                        style="object-fit: cover;">
+                        <source src="img/Training.mp4" type="video/mp4">
+                        <!-- <source src="movie.ogg" type="video/ogg"> -->
+                    </video>
+                </div>
+
+                <div class="container">
+                    <div class="row justify-center text-center">
+                        <div class="col-xl-5 col-lg-6 col-md-11">
+
+                            <div class="sectionTitle -light">
+
+                                <h2 class="sectionTitle__title ">Discover the Aviation consultancy path that suits you
+                                    best.</h2>
+
+                                <p class="sectionTitle__text ">Match your goals to our programs, explore your options
+                                    and map out your path to success.</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mt-30 justify-center">
+                        <div class="col-lg-3">
+
+                            <a data-barba="" href=""
+                                class="button -md -outline-light-4 text-white">Get Started Now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+            <section class="layout-pt-md layout-pb-md">
+                <div class="container">
+                  <div class="row y-gap-30 items-center">
+                    <div class="col-xl-4 offset-xl-1 order-lg-1 col-lg-6 order-2">
+                      <h3 class="text-24 lh-1">ATOM Vision</h3>
+                      <p class="mt-20">ATOM Aviation Training Services envisions a future where our institution stands as a beacon of excellence and innovation in the aviation training landscape. We aspire to be the foremost global hub, driving the evolution of the aviation industry through cutting-edge training programs, pioneering safety standards, and industry-redefining consultancy services. Our vision is to empower a generation of aviation professionals who set new standards for safety, efficiency, and expertise, ensuring a dynamic and secure future for global air transportation.</p>
+                
+                    </div>
+        
+                    <div class="col-xl-5 offset-xl-1 col-lg-6 order-lg-2 order-1">
+                      <img class="w-1/1" src="img/Vision.png" alt="image">
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+
+            <section class="features-count-sec layout-pt-md layout-pb-md">
+                <div class="container">
+                    <div class="row justify-center text-center">
+                        <div class="col-auto">
+
+                            <div class="sectionTitle ">
+
+                                <h2 class="sectionTitle__title text-white">We are Proud</h2>
+
+                                <p class="sectionTitle__text text-light-3">ATOM Training and Consultancy Institute LLC &
+                                    ATOM Aviation Services Academy.</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div data-anim-wrap class="row y-gap-30 counter__row">
+
+                        <div class="col-lg-3 col-sm-6">
+                            <div data-anim-child="slide-left delay-1" class="counter -type-1">
+                                <div class="counter__number">350,000+</div>
+                                <div class="counter__title">Students worldwide</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6">
+                            <div data-anim-child="slide-left delay-2" class="counter -type-1">
+                                <div class="counter__number">496,00+</div>
+                                <div class="counter__title">Total course views</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6">
+                            <div data-anim-child="slide-left delay-3" class="counter -type-1">
+                                <div class="counter__number">19,000+</div>
+                                <div class="counter__title">Five-star course reviews</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-6">
+                            <div data-anim-child="slide-left delay-4" class="counter -type-1">
+                                <div class="counter__number">987,000+</div>
+                                <div class="counter__title">Students community</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+
+            <footer class="footer-type-2 footer-bg-img footer -type-1 -f-links">
+                <div class="container">
+                    <div class="footer-header">
+                        <div class="row y-gap-20 justify-between items-center">
+                            <div class="col-auto">
+                                <div class="footer-header__logo">
+                                    <img width="200" src="img/logo-b.png" alt="logo">
+                                </div>
+                            </div>
+
+                            <div class="col-auto">
+                                <div class="footer-header-socials">
+                                    <div class="footer-header-socials__title text-black">
+                                        <img width="40" src="img/icons/phone2.svg" alt="logo">
+                                    </div>
+                                    <p>
+                                        +971 – 42516661
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="col-auto">
+                                <div class="footer-header-socials">
+                                    <div class="footer-header-socials__title text-black">
+                                        <img width="40" src="img/icons/mail2.svg" alt="logo">
+                                    </div>
+                                    <p>
+                                        atom@atomtci.expert
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-auto">
+                                <div class="footer-header-socials">
+                                    <div class="footer-header-socials__title text-black">Follow us on social media</div>
+                                    <div class="footer-header-socials__list">
+                                        <a href="#"><i class="icon-facebook"></i></a>
+                                        <a href="#"><i class="icon-twitter"></i></a>
+                                        <a href="#"><i class="icon-instagram"></i></a>
+                                        <a href="#"><i class="icon-linkedin"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-columns">
+                        <div class="row y-gap-30">
+                            <div class="col-xl-3 col-lg-4 col-md-6">
+                                <div class="text-17 fw-500 text-black uppercase mb-25">ABOUT</div>
+                                <div class="ft-text-dark-all d-flex y-gap-10 flex-column">
+                                    <a href="#">About Us</a>
+                                    <a href="#">Learner Stories</a>
+                                    <a href="#">Careers</a>
+                                    <a href="#">Media Center</a>
+                                    <a href="#">Leadership</a>
+
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-8">
+                                <div class="text-17 fw-500 text-black uppercase mb-25">CATEGORIES</div>
+                                <div class="row justify-between y-gap-20">
+                                    <div class="col-md-6">
+                                        <div class="ft-text-dark-all d-flex y-gap-10 flex-column">
+                                            <a href="#">Aviation Cyber Security</a>
+                                            <a href="#">Atc Training Software </a>
+                                            <a href="#"> User Needs / Requirements Analysis</a>
+                                            <a href="#">Transition Planning + Implementation</a>
+                                            <a href="#">Safety Management</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="ft-text-dark-all d-flex y-gap-10 flex-column">
+                                            <a href="#">Procedure Development</a>
+                                            <a href="#">Concept of Operation Development</a>
+                                            <a href="#">Airspace Studies</a>
+                                            <a href="#">Airspace Design</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-2 offset-xl-1 col-lg-4 col-md-6">
+                                <div class="text-17 fw-500 text-black uppercase mb-25">SUPPORT</div>
+                                <div class="ft-text-dark-all d-flex y-gap-10 flex-column">
+                                    <a href="#">Documentation</a>
+                                    <a href="#">Help</a>
+                                    <a href="#">Privacy Policy</a>
+                                    <a href="#">Terms of Use</a>
+                                    <a href="#">Contact Us</a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </footer>
+
+            <div class="bg-blue-1">
+                <div class="container">
+                    <div class="py-15 border-top-light-15">
+                        <div class="row justify-between items-center y-gap-20">
+                            <div class="col-auto">
+                                <div class="d-flex items-center h-100 text-white">
+                                    © 2023 ATOM. All Right Reserved.
+                                </div>
+                            </div>
+
+                            <div class="col-auto">
+                                <div class="d-flex x-gap-20 y-gap-20 items-center flex-wrap">
+                                    <div>
+                                        <div class="d-flex x-gap-15 text-white">
+                                            <p> Designed <a href="">Tomsher</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="js/vendors.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

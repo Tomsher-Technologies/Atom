@@ -1,0 +1,1 @@
+php artisan serve --host=aldouri-corp.local
