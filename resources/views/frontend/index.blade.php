@@ -40,7 +40,7 @@
                         </div>
 
                         <p class="pop-search" data-anim-child="slide-up delay-4" class="mainSlider__text text-white">
-                            <a href="{{ route('training-courses') }}" class="text-white" data-el-toggle=".js-search-toggle"> <u>
+                            <a href="{{ route('search-course') }}" class="text-white" data-el-toggle=".js-search-toggle"> <u>
                                     {{ $page->content3 ?? '' }}</u>
                             </a>
 

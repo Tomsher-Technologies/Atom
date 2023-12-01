@@ -329,9 +329,61 @@ class FrontendController extends Controller
         }
     }
 
-    public function searchCourse(){
-        $search = $_GET['keyword'];
+    public function searchCourse(Request $request){
+        $search = $category = $language = $course_type = $location = '';
+        // DB::enableQueryLog();
 
-        // $data = TrainingCourses::where('name','LIKE',)
+        if($request->has('keyword')){
+            $search = $request->keyword;
+        }
+        if($request->has('course_type')){
+            $course_type = $request->course_type;
+        }
+        if($request->has('categories')){
+            $category = $request->categories;
+        }
+        if($request->has('location')){
+            $location = $request->location;
+        }
+        if($request->has('language')){
+            $language = $request->language;
+        }
+
+        $query = TrainingCourses::with(['training_category'])->where('status',1);
+
+        if($search != ''){
+            $query->Where(function ($query) use ($search) {
+                $query->where('name', 'LIKE', "%$search%")
+                ->orWhere('banner_title', 'LIKE', "%$search%")
+                ->orWhere('description', 'LIKE', "%$search%")
+                ->orWhere('banner_content', 'LIKE', "%$search%"); 
+                $query->orWhereHas('training_category', function ($query)  use($search) {
+                    $query->where('training_categories.name', 'LIKE', "%$search%"); 
+                });
+            }); 
+        }
+
+        if($course_type){
+            $query->where('course_type_id', $course_type);
+        }
+
+        if($category){
+            $query->where('category_id', $category);
+        }
+
+        if($location){
+            $query->where('location_id', $location);
+        }
+
+        if($language){
+            $query->where('lang_id', $language);
+        }
+        
+        $courses = $query->paginate(15);
+        // dd(DB::getQueryLog());
+        // echo '<pre>';
+        // print_r($result);
+        // die;
+        return view('frontend.search-results',compact('courses','search','category','language','course_type','location'));
     }
 }
