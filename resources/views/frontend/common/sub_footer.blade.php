@@ -88,8 +88,8 @@
                     <div class="ft-text-dark-all d-flex y-gap-10 flex-column">
                         <a href="{{ route('career') }}">Career</a>
                         <a href="{{ route('contact') }}">FAQS</a>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Use</a>
+                        <a href="{{ route('privacy') }}">Privacy Policy</a>
+                        <a href="{{ route('terms') }}">Terms of Use</a>
                         <a href="{{ route('contact') }}">Contact Us</a>
                     </div>
                 </div>

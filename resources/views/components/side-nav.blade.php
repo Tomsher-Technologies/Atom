@@ -215,6 +215,18 @@
                     </a>
                 </li>
 
+                <li class="{{ (request()->routeIs('admin.page.privacy') ) ? 'active' : '' }}">
+                    <a href="{{ route('admin.page.privacy') }}">
+                        <i class="simple-icon-doc"></i> <span class="d-inline-block">Privacy Policy</span>
+                    </a>
+                </li>
+
+                <li class="{{ (request()->routeIs('admin.page.terms') ) ? 'active' : '' }}">
+                    <a href="{{ route('admin.page.terms') }}">
+                        <i class="simple-icon-doc"></i> <span class="d-inline-block">Terms & Conditions</span>
+                    </a>
+                </li>
+
                 <li class="{{ (request()->routeIs('admin.page.webinars') ) ? 'active' : '' }}">
                     <a href="{{ route('admin.page.webinars') }}">
                         <i class="simple-icon-doc"></i> <span class="d-inline-block">Webinars</span>
