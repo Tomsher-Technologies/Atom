@@ -43,7 +43,8 @@
                                     </div>
                                     <div class="blogCard__content mt-20">
                                         <h4 class="blogCard__title text-18 lh-15 fw-500 mt-5">
-                                            {{ $blog->title }}
+                                            {{  mb_strimwidth(strip_tags($blog->title), 0, 60, '...') }}
+                                           
                                         </h4>
                                         <div class="blogCard__date mt-5">{{ date('M d, Y', strtotime($blog->blog_date)) }}</div>
                                     </div>
