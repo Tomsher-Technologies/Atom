@@ -386,4 +386,18 @@ class FrontendController extends Controller
         // die;
         return view('frontend.search-results',compact('courses','search','category','language','course_type','location'));
     }
+
+    public function privacy()
+    {
+        $page = Pages::with(['seo'])->where('page_name','privacy')->first();
+        $this->loadSEO($page);
+        return view('frontend.privacy',compact('page'));
+    }
+
+    public function terms()
+    {
+        $page = Pages::with(['seo'])->where('page_name','terms')->first();
+        $this->loadSEO($page);
+        return view('frontend.terms',compact('page'));
+    }
 }

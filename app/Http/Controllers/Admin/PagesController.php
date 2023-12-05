@@ -1274,4 +1274,79 @@ class PagesController extends Controller
         ]);
     }
 
+    public function privacyPage()
+    {
+        $data = Pages::with(['seo'])->where('page_name','privacy')->first();
+      
+        return view('admin.pages.privacy',compact('data'));
+    }
+
+    public function storePrivacyPage(Request $request)
+    {
+        $request->validate([
+                        'title' => 'required',
+                        'sub_title' => 'required',
+                        'description' => 'required'
+                    ],[
+                        '*.required' => 'This field is required.',
+                    ]);
+        $data = [
+                'page_title'            => 'Privacy Policy',
+                'page_name'             => 'privacy',
+                'title'                 => $request->title,
+                'sub_title'             => $request->sub_title,
+                'description'           => $request->description,
+                'seotitle'              => $request->seotitle,
+                'ogtitle'               => $request->ogtitle,
+                'twtitle'               => $request->twtitle,
+                'seodescription'        => $request->seodescription, 
+                'og_description'        => $request->og_description,
+                'twitter_description'   => $request->twitter_description,
+                'seokeywords'           => $request->seokeywords,
+        ];
+
+        $this->savePageSettings($data);
+        return redirect()->back()->with([
+            'status' => "Page details updated"
+        ]);
+    }
+
+    public function termsPage()
+    {
+        $data = Pages::with(['seo'])->where('page_name','terms')->first();
+      
+        return view('admin.pages.terms',compact('data'));
+    }
+
+    public function storeTermsPage(Request $request)
+    {
+        $request->validate([
+                        'title' => 'required',
+                        'sub_title' => 'required',
+                        'description' => 'required'
+                    ],[
+                        '*.required' => 'This field is required.',
+                    ]);
+        $data = [
+                'page_title'            => 'Terms & Conditions',
+                'page_name'             => 'terms',
+                'title'                 => $request->title,
+                'sub_title'             => $request->sub_title,
+                'description'           => $request->description,
+                'seotitle'              => $request->seotitle,
+                'ogtitle'               => $request->ogtitle,
+                'twtitle'               => $request->twtitle,
+                'seodescription'        => $request->seodescription, 
+                'og_description'        => $request->og_description,
+                'twitter_description'   => $request->twitter_description,
+                'seokeywords'           => $request->seokeywords,
+        ];
+
+        $this->savePageSettings($data);
+        return redirect()->back()->with([
+            'status' => "Page details updated"
+        ]);
+    }
+
+
 }

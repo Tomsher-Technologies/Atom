@@ -39,6 +39,8 @@ Route::post('/webinar-book', [FrontendController::class, 'bookWebinar'])->name('
 Route::get('/blogs', [FrontendController::class, 'blogs'])->name('blogs');
 Route::get('/blog/{slug}', [FrontendController::class, 'blogDetails'])->name('blog-details');
 
+Route::get('/privacy', [FrontendController::class, 'privacy'])->name('privacy');
+Route::get('/terms', [FrontendController::class, 'terms'])->name('terms');
 
 Route::get('/search-course', [FrontendController::class, 'searchCourse'])->name('search-course');
 

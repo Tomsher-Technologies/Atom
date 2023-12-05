@@ -82,10 +82,15 @@
                                                     {{-- <h4 class="text-17 fw-500 mb-20 text-white"> Courses</h4> --}}
                                                     @php
                                                         $header_courses = get_header_courses();
+                                                        $mob_header_courses = '';
                                                     @endphp
                                                     <ul class="mega__list">
                                                         @foreach ($header_courses  as $hc)
                                                             <a href="{{ route('courses',['slug' => $hc['slug'] ]) }}">{{ $hc['name'] }}</a>
+
+                                                            @php
+                                                                $mob_header_courses .= '<li><a data-barba href="'.route('courses',['slug' => $hc['slug'] ]) .'">'.$hc['name'].'</a></li>';
+                                                            @endphp
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -94,14 +99,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <ul class="subnav d-none xl:d-block">
+                                <ul class="subnav d-none xl:d-block">
                                     <li class="menu__backButton js-nav-list-back">
                                         <a href="#"><i class="icon-chevron-left text-13 mr-10"></i> Courses</a>
                                     </li>
-                                    <li><a data-barba href="">Consulting Solutions</a></li>
-                                    <li><a data-barba href="">Executive Coaching</a></li>
-                                    <li><a data-barba href="">Meirc Talent Tool (MTT)</a></li>
-                                </ul> --}}
+                                    {!! $mob_header_courses !!}
+                                </ul>
                             </li>
                             <li class="menu-item-has-children -has-mega-menu">
                                 <a data-barba href="#">Services <i class="icon-chevron-right text-13 ml-10"></i></a>
@@ -121,10 +124,14 @@
                                                     {{-- <h4 class="text-17 fw-500 mb-20 text-white"> Courses</h4> --}}
                                                     @php
                                                         $header_services = get_header_services();
+                                                        $mob_header_services = '';
                                                     @endphp
                                                     <ul class="mega__list">
                                                         @foreach ($header_services  as $hs)
                                                             <a href="{{ route('service-details',['slug' => $hs['slug'] ]) }}">{{ $hs['name'] }}</a>
+                                                            @php
+                                                                $mob_header_services .= '<li><a data-barba href="'.route('service-details',['slug' => $hs['slug'] ]).'">'.$hs['name'].'</a></li>';
+                                                            @endphp
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -133,14 +140,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <ul class="subnav d-none xl:d-block">
+                                <ul class="subnav d-none xl:d-block">
                                     <li class="menu__backButton js-nav-list-back">
                                         <a href="#"><i class="icon-chevron-left text-13 mr-10"></i> Courses</a>
                                     </li>
-                                    <li><a data-barba href="">Consulting Solutions</a></li>
-                                    <li><a data-barba href="">Executive Coaching</a></li>
-                                    <li><a data-barba href="">Meirc Talent Tool (MTT)</a></li>
-                                </ul> --}}
+                                    {!! $mob_header_services !!}
+                                </ul>
                             </li>
                             <li class="menu-item-has-children">
                                 <a data-barba href="#">MEDIA CENTER <i class="icon-chevron-right text-13 ml-10"></i></a>
@@ -201,7 +206,7 @@
                         </div>
                     </div>
                     <div class="header-right__buttons d-flex items-center ml-30 md:d-none">
-                        <a href="#"
+                        <a href="tel:{{ get_setting('call_back_phone')}}"
                             class="button px-35 h-40 -gradient-1 text-white -rounded ml-30 xl:ml-20">CALL ME
                             BACK</a>
                     </div>

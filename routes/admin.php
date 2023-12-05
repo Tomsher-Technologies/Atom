@@ -138,6 +138,12 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
             Route::get('/blogs', [PagesController::class, 'blogsPage'])->name('blogs');
             Route::post('/store-blogs', [PagesController::class, 'storeBlogsPage'])->name('store-blogs');
+
+            Route::get('/privacy', [PagesController::class, 'privacyPage'])->name('privacy');
+            Route::post('/store-privacy', [PagesController::class, 'storePrivacyPage'])->name('store-privacy');
+
+            Route::get('/terms', [PagesController::class, 'termsPage'])->name('terms');
+            Route::post('/store-terms', [PagesController::class, 'storeTermsPage'])->name('store-terms');
         });
 
         Route::resource('roles', RoleController::class);
