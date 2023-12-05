@@ -58,8 +58,8 @@
                                     <div class="eventCard__date">
                                     
                                         <span class="text-45 lh-1 fw-700 text-dark-1">{{ date('d', strtotime($up->webinar_date)) }}</span>
-                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('M', strtotime($up->webinar_date)) }}</span>
-                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('Y', strtotime($up->webinar_date)) }}</span>
+                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('M', strtotime($up->webinar_date)) }},</span>
+                                        <span class="text-18 lh-1 fw-500 ml-5">{{ date('Y', strtotime($up->webinar_date)) }}</span>
                                     </div>
         
                                     <h4 class="eventCard__title text-24 lh-15 fw-500">
@@ -130,8 +130,8 @@
                                 <div class="eventCard -type-3 bg-light-4 rounded-8">
                                     <div class="eventCard__date">
                                         <span class="text-45 lh-1 fw-700 text-dark-1">{{ date('d', strtotime($comp->webinar_date)) }}</span>
-                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('M', strtotime($comp->webinar_date)) }}</span>
-                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('Y', strtotime($comp->webinar_date)) }}</span>
+                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('M', strtotime($comp->webinar_date)) }},</span>
+                                        <span class="text-18 lh-1 fw-500 ml-5">{{ date('Y', strtotime($comp->webinar_date)) }}</span>
                                     </div>
 
                                     <h4 class="eventCard__title text-24 lh-15 fw-500">

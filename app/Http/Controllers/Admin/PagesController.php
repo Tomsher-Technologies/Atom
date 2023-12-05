@@ -1184,7 +1184,7 @@ class PagesController extends Controller
             'title' => $request->get('title'),
             'description'    => $request->description,
             'status'    => $request->status,
-            'sort_order' => $request->sort_order
+            'sort_order' => ($request->sort_order != '') ? $request->sort_order : 0,
         ]);
         return redirect()->route('admin.faq.index')->with([
             'status' => "FAQ Created"

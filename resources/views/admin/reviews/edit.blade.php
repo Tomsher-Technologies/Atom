@@ -81,8 +81,7 @@
                            
                             <button type="submit" class="btn btn-primary mb-0">Submit</button>
                             <a href="{{ route('admin.reviews.index') }}" class="btn btn-info mb-0"> Cancel</a>
-                            <button type="button" id="deleteBtn" class="btn btn-dark mb-0 float-right">Delete
-                                Service</button>
+                            <button type="button" id="deleteBtn" class="btn btn-dark mb-0 float-right">Delete</button>
                         </form>
                     </div>
                 </div>
