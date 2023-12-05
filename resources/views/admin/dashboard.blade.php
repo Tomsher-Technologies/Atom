@@ -12,7 +12,7 @@
                         <div class="row no-gutters">
 
                             <div class="col-lg-3">
-                                <a href="{{ route('admin.enquiries') }}" class="card">
+                                <a href="{{ route('admin.enquiries.contact') }}" class="card">
                                     <div class="card-body text-center">
                                         <i class="iconsminds-mail-send"></i>
                                         <p class="card-text mb-0">Enquires</p>
