@@ -103,8 +103,8 @@
             </div>
         </div>
     </section>
-    <section class="layout-pt-lg layout-pb-lg bg-light-4">
-        <div class="container">
+    <section class="layout-pt-lg layout-pb-lg bg-light-4" id="faqDiv">
+        <div class="container" >
             <div class="row justify-center text-center">
                 <div class="col-xl-8 col-lg-9 col-md-11">
                     <div class="sectionTitle ">
