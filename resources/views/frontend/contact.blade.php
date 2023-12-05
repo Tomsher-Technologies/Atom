@@ -31,9 +31,7 @@
                             <div class="d-flex justify-center items-center size-60 rounded-full bg-light-7">
                                 <img src="{{ asset('assets/img/icons/location1.svg') }}" alt="icon">
                             </div>
-                            <div class="ml-20">
-                                {!! get_setting('address') !!}
-                            </div>
+                            <div class="ml-20" style="white-space: pre-wrap;">{!! trim(get_setting('address')) !!}</div>
                         </div>
                         <div class="d-flex items-center">
                             <div class="d-flex justify-center items-center size-60 rounded-full bg-light-7">

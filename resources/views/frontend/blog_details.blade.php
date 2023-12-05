@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="related-nav__content">
                                                 <div class="text-17 text-dark-1 fw-500">Prev</div>
-                                                <p class="text-dark-1 mt-8"> {!! $previous_post->title !!}</p>
+                                                <p class="text-dark-1 mt-8"> {!! mb_strimwidth(strip_tags($previous_post->title), 0, 60, '...') !!}</p>
                                             </div>
                                         </a>
                                     </div>
@@ -116,7 +116,7 @@
                                         <a href="{{ route('blog-details',['slug' => $next_post->slug]) }}" class="related-nav__item -next text-right decoration-none">
                                             <div class="related-nav__content">
                                                 <div class="text-17 text-dark-1 fw-500">Next</div>
-                                                <p class="text-dark-1 mt-8">{!! $next_post->title !!}</p>
+                                                <p class="text-dark-1 mt-8">{!! mb_strimwidth(strip_tags($next_post->title), 0, 60, '...') !!}</p>
                                             </div>
                                             <div class="related-nav__arrow">
                                                 <i class="icon size-20 pt-5" data-feather="arrow-right"></i>
