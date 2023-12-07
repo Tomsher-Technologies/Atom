@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-11">
-                    <p data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white mt-25 lh-16">
+                    <p data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white lh-16">
                         {!! $page->description ?? '' !!}
                     </p>
                 </div>
@@ -65,7 +65,7 @@
                                         <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Upload CV* (Please upload PDF file with size less than 500 KB)</label>
                                         <div class="form-upload__wrap">
                                             <input type="file" name="resume" accept=".pdf" id="resume" placeholder="cv.pdf">
-                                            <button class="button -dark-3 text-white">Upload Files</button>
+                               
                                         </div>
                                     </div>
                                     <x-input-error  name="resume" />

@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-11">
-                    <p data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white mt-25 lh-16">
+                    <p data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white lh-16">
                         {!! $page->description ?? '' !!}
                     </p>
                 </div>
@@ -100,7 +100,7 @@
                     <div class="composition -type-3">
                         <div class="-el-1">
                             <div class="bg-dark-1 py-50 px-30 rounded-8">
-                                <div class="y-gap-20 pt-25">
+                                <div class="y-gap-20">
                                     @php
                                         $points = json_decode($page->courses);
                                     @endphp

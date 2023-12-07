@@ -32,6 +32,9 @@ Route::get('/trainings', [FrontendController::class, 'trainings'])->name('traini
 Route::get('/trainings/{slug}', [FrontendController::class, 'trainingCourses'])->name('courses');
 Route::get('/course/{slug}', [FrontendController::class, 'courseDetails'])->name('course-details');
 
+Route::get('/course-apply/{slug}', [FrontendController::class, 'courseApply'])->name('course-apply');
+Route::post('/apply-course', [FrontendController::class, 'storeCourseApply'])->name('apply-course');
+
 Route::get('/webinars', [FrontendController::class, 'webinars'])->name('webinars');
 Route::get('/webinar/{slug}', [FrontendController::class, 'webinarDetails'])->name('webinar-details');
 Route::post('/webinar-book', [FrontendController::class, 'bookWebinar'])->name('webinar-book');

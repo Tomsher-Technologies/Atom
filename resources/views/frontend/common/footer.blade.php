@@ -53,7 +53,7 @@
             </div>
 
             <div class="col-lg-5 col-md-5">
-                <div class="pt-60 pl-30 pb-30 h-100  rounded-30"
+                <div class="pt-60 pl-30 pr-30 pb-30 h-100  rounded-30"
                     style="background-image: url({{ asset('assets/img/bg-23.jpg') }}); background-size: cover;background-position: right;">
                     <div class="pt-40 text-center"><img class="m-auto" width="150"
                             src="{{ asset('assets/img/logow.png') }}" alt="">
@@ -65,7 +65,7 @@
                               <i class="text-blue-1 icon-facebook"></i>
                             </a>
                             <a href="{{ get_setting('twitter') }}" class="bg-white size-40 d-flex justify-center items-center text-white rounded-30">
-                              <i class="text-blue-1 icon-twitter"></i>
+                              <i class="text-blue-1 fa-brands fa-x-twitter"></i>
                             </a>
                             <a href="{{ get_setting('instagram') }}" class="bg-white size-40 d-flex justify-center items-center text-white rounded-30">
                               <i class="text-blue-1 icon-instagram"></i>

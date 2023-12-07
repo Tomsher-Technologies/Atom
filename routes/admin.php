@@ -101,6 +101,15 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
         Route::post('/faq-update', [PagesController::class, 'updateFaq'])->name('faq.update'); 
         Route::post('/delete-faq', [PagesController::class, 'deleteFaq'])->name('faq.delete');
 
+        Route::get('/downloads', [DashboardController::class, 'downloads'])->name('downloads.index');
+        Route::get('/create-downloads', [DashboardController::class, 'createDownloads'])->name('downloads.create');
+        Route::post('/store-downloads', [DashboardController::class, 'storeDownloads'])->name('downloads.store');
+
+        Route::get('/edit-downloads/{id}', [DashboardController::class, 'editDownloads'])->name('downloads.edit');
+        Route::post('/downloads-update', [DashboardController::class, 'updateDownloads'])->name('downloads.update'); 
+
+        Route::post('/downloads-delete', [DashboardController::class, 'deleteDownloads'])->name('downloads.delete'); 
+
         Route::group(['prefix' => 'pages', 'as' => 'page.'], function () {
            
             Route::get('/home', [PagesController::class, 'homePage'])->name('home');

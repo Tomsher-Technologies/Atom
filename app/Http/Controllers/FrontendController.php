@@ -18,6 +18,7 @@ use App\Models\TrainingCourses;
 use App\Models\Webinars;
 use App\Models\Blogs;
 use App\Models\WebinarBookings;
+use App\Models\CourseRegistrations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -400,4 +401,38 @@ class FrontendController extends Controller
         $this->loadSEO($page);
         return view('frontend.terms',compact('page'));
     }
+
+    public function courseApply(Request $request)
+    {
+        $slug = $request->slug;
+        $course = TrainingCourses::with(['training_category','course_details'])->where('status',1)->where('slug',$slug)->first();
+        
+        return view('frontend.course-apply',compact('course'));
+    }
+
+    public function storeCourseApply(Request $request){
+        $type = $request->registration_type;
+        $course_id = $request->course_id;
+
+        $users = $request->users;
+        $parent_id = 0;
+        foreach ($users as $key => $user) {
+            $data = [
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'phone' => $user['phone'],
+                'course_id' => $course_id,
+                'parent_id' => ($key == 0) ? 0 : $parent_id,
+                'price' => $request->price,
+                'type' =>  $type
+            ];
+            
+            $registration = CourseRegistrations::create($data);
+            if($key == 0){
+                $parent_id = $registration->id;
+            }
+        }
+        return redirect()->back()->with('status', '<span style="color: #00a659;font-weight: 700;">Successfully registered</span>');
+    }
+
 }
