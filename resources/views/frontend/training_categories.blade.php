@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="col-xl-5 col-lg-11">
-                    <div data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white mt-25 lh-16">
+                    <div data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white lh-16">
                         {!! $page->description ?? '' !!}
                     </div>
                 </div>

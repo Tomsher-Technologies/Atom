@@ -36,7 +36,7 @@
                         <div class="footer-header-socials__title text-black">{{ get_setting('footer_social_title') ?? '' }}</div>
                         <div class="footer-header-socials__list">
                             <a href="{{ get_setting('facebook') }}"><i class="icon-facebook"></i></a>
-                            <a href="{{ get_setting('twitter') }}"><i class="icon-twitter"></i></a>
+                            <a href="{{ get_setting('twitter') }}"><i class="fa-brands fa-x-twitter"></i></a>
                             <a href="{{ get_setting('instagram') }}"><i class="icon-instagram"></i></a>
                             <a href="{{ get_setting('linkedin') }}"><i class="icon-linkedin"></i></a>
                         </div>

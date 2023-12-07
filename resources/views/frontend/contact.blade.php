@@ -4,11 +4,11 @@
         <div class="container">
             <div class="page-header__content">
                 <div class="row">
-                    <div class="col-auto">
-                        <div data-anim="slide-up delay-1">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div >
                             <h1 class="page-header__title">{!! $page->title !!}</h1>
                         </div>
-                        <div data-anim="slide-up delay-2">
+                        <div >
                             <p class="page-header__text">
                                 {!! $page->sub_title !!}
                             </p>
