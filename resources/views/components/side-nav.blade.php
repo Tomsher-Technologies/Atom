@@ -41,6 +41,14 @@
                     </li>
                 @endcan
 
+                @can('downloads')
+                    <li class="{{ request()->routeIs('admin.downloads*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.downloads.index') }}">
+                            <i class="iconsminds-download"></i>Downloads
+                        </a>
+                    </li>
+                @endcan
+
                 @can('webinars')
                     <li class="{{ request()->routeIs('admin.webinars*') ? 'active' : '' }}">
                         <a href="{{ route('admin.webinars.index') }}">

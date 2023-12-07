@@ -33,8 +33,39 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    <div class="h-100 pt-15 pb-15 pl-10 pr-10">
+                        <div class="d-grid c-grid-columns x-gap-10 items-center pt-10">
+                            <div class="d-flex items-center">
+                                <div class="mr-8">
+                                    <img src="{{ asset('assets/img/icons/duration.svg') }}" alt="icon">
+                                </div>
+                                <div class="text-14 lh-1">{!! $course->duration ?? '' !!}</div>
+                            </div>
 
+                            <div class="d-flex items-center">
+                                <div class="mr-8">
+                                    <img src="{{ asset('assets/img/icons/lang.svg') }}" alt="icon">
+                                </div>
+                                <div class="text-14 lh-1 white-space-nowrap">{!! $course->language->title ?? '' !!}</div>
+                            </div>
 
+                            <div class="d-flex items-center">
+                                <div class="mr-8">
+                                    <img src="{{ asset('assets/img/icons/type.svg') }}" alt="icon">
+                                </div>
+                                <div class="text-14 lh-1 white-space-nowrap">{!! $course->course_type->title ?? '' !!}</div>
+                            </div>
+
+                            <div class="d-flex items-center">
+                                <div class="mr-8">
+                                    <img src="{{ asset('assets/img/icons/location.svg') }}" alt="icon">
+                                </div>
+                                <div class="text-14 lh-1">{!! $course->location->name ?? '' !!}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
                     <div id="overview" class="pt-60 lg:pt-40 to-over">
                         <h4 class="text-18 fw-500">Description</h4>
 
@@ -103,12 +134,105 @@
                 </div>
 
 
-                <div class="col-12 mt-40">
+                <div class="col-12 mt-40" id="formDiv">
                     <hr>
                     <br>
-                    <button type="submit" name="submit" id="submit" class="button -md -purple-1 text-white">
-                        Apply Now
-                    </button>
+                    {{-- <button name="submit" id="submit" class="button -md -purple-1 text-white">
+                        <a href="{{ route('course-apply',['slug' => $course->slug]) }}">Apply Now
+                    </button> --}}
+                   
+                    <section class="layout-pt-sm layout-pb-lg">
+                        <div data-anim-wrap class="container">
+                            <div class="row y-gap-60">
+                                <div class="col-12">
+                                    <div class="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100" >
+
+                                        @if ($message = Session::get('status'))
+                                            <div class="col-12">
+                                                <div class="col-12">
+                                                    <div
+                                                        class="d-flex items-center justify-between bg-success-1 pl-30 pr-20 py-30 rounded-8">
+                                                        <div class="text-success-2 lh-14 fw-300">
+                                                            <div class="text-18 fw-700">
+                                                                {!! $message !!}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        <div class="d-flex items-center py-20 px-30 border-bottom-light">
+                                            <h2 class="text-20 lh-1 fw-500">Register Now</h2>
+                                        </div>
+                                        <div class="py-30 px-30">
+                                            <form class="contact-form row y-gap-30 repeater" id="applyCourse" method="POST" action="{{ route('apply-course') }}" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="col-6">
+                                                    <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Type*</label>
+                                                    <select name="registration_type" id="registration_type" >
+                                                        <option value="individual">Individual</option>
+                                                        <option value="group">Group</option>
+                                                    </select>
+                                                    <input type="hidden" value="{{$course->id}}" name="course_id">
+                                                    <input type="hidden" value="{{$course->price}}" name="price">
+                                                    
+                                                </div>
+
+                                                <div data-repeater-list="users">
+                                                    <div data-repeater-item class="row">
+                                                       
+                                                        <div class="col-4">
+                                                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Name*</label>
+                                                            <input type="text" name="name" id="name" placeholder="Enter your name" value="{{ old('name') }}">
+                                                        </div>
+                        
+                                                        <div class="col-4">
+                                                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Email*</label>
+                                                            <input type="email" placeholder="Enter your email" name='email' id='email' value="{{ old('email') }}">
+                                                        </div>
+                            
+                                                        <div class="col-4" id="job-application">
+                                                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Phone Number*</label>
+                                                            <input type="text" placeholder="Enter your phone number" name='phone' id='phone' value="{{ old('phone') }}">
+                                                        </div>
+
+                                                        <div class="text-right col-sm-12 mb-10 d-block">
+                                                            <input data-repeater-delete class="button -sm -red-1 text-white mt-2" type="button" value="Delete" style="float:right;" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class=" px-sm-40 px-20 col-sm-12 mb-10">
+                                                    <input data-repeater-create class="button -sm -purple-1 text-white" type="button" value="Add New" id="addNew" />
+                                                </div>
+                    
+                                              
+                                                <div class="row y-gap-20 justify-between pt-15">
+                                                    <div class="col-12">
+                                                        <div class="col-12">
+                                                            <div
+                                                                class="d-flex items-center justify-between bg-info-1 pl-30 pr-20 py-30 rounded-8">
+                                                                <div class="text-info-2 lh-14 fw-300">
+                                                                    <div class="text-18 fw-700">
+                                                                        Total Price : <span id="priceTotal">{{$course->price}}</span> AED
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button type="submit" class="button -md -outline-purple-1 text-purple-1">Register Now</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -116,3 +240,111 @@
 
     @include('frontend.common.proud_blue')
 @endsection
+
+@push('header')
+    <style>
+        .error{
+            color: red !important;
+        }
+    </style>
+@endpush
+
+@push('footer')
+<script src="{{ adminAsset('js/vendor/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ adminAsset('js/jquery.repeater.min.js') }}"></script>
+<script src="{{ adminAsset('js/vendor/jquery.validate/jquery.validate.js') }}"></script>
+<script src="{{ adminAsset('js/vendor/jquery.validate/additional-methods.js') }}"></script>
+
+<script>
+
+    var message =  "{{ Session::get('status') }}";
+    
+    if(message != ''){
+        $('html, body').animate({
+            scrollTop: $("#formDiv").offset().top
+        }, 1000);
+    }
+
+
+    $('#addNew').css('display','none');
+
+    $('#registration_type').on('change', function(){
+        var type = $(this).val();
+        
+        if(type == 'group'){
+            $('#addNew').css('display','block');
+        }else{
+            $('#addNew').css('display','none');
+            $('div[data-repeater-item]:not(:first)').remove();
+        }
+    });
+
+
+    $('.repeater').repeater({
+        initEmpty: false,
+        show: function(e) {
+            $(this).slideDown();
+
+            var repeaterItems = $("div[data-repeater-item]");
+            var repeatCount = repeaterItems.length;
+            
+            addFieldValidation(repeatCount);
+        },
+        hide: function(deleteElement) {
+            if (confirm('Are you sure you want to delete this element?')) {
+                $(this).slideUp(deleteElement);
+            }
+            var repItems = $("div[data-repeater-item]");
+            var repCount = repItems.length;
+           
+            if(repCount == 2){
+                $('#registration_type').val('individual');
+            }
+        },
+        isFirstItemUndeletable: true
+    })
+
+    function addFieldValidation(count){
+        count = parseInt(count) - 1;
+        $('[name="users['+count+'][name]"]').attr("id","name"+count);
+        $('[name="users['+count+'][email]"]').attr("id","email"+count);
+        $('[name="users['+count+'][phone]"]').attr("id","phone"+count);
+
+        $("#name"+count).rules('add', { required: true });
+        $("#email"+count).rules('add', { required: true });
+        $("#phone"+count).rules('add', { required: true });
+
+    }
+
+
+    $("#applyCourse").validate({
+        rules: {
+            registration_type: 'required',
+            'users[0][name]':{
+                required:true
+            },
+            'users[0][email]':{
+                required:true
+            },
+            'users[0][phone]':{
+                required:true
+            },
+        }, messages: {
+            
+        },
+        errorPlacement: function (error, element) {
+            if(element.hasClass('select2')) {
+                error.insertAfter(element.next('.select2-container'));
+            }else if(element.parent('.input-group').length) {
+                error.insertAfter(element.parent().parent().parent());
+            } else{
+                error.appendTo(element.parent("div"));
+            }
+        },
+        submitHandler: function(form, event) {
+            form.submit();
+        }
+    });
+
+</script>
+@endpush
