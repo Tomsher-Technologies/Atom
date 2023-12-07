@@ -56,13 +56,16 @@
 
                     </div>
 
-                    <div class="row justify-center pt-60 lg:pt-40">
+                    <div class="row justify-center pt-50 lg:pt-50">
                         <div class="col-auto">
+                            <div id="pg-custom">
                             <div class="pagination">
-                                {{ $blogs->appends(request()->input())->links('pagination::bootstrap-4') }}
+                                {{ $blogs->appends(request()->input())->links('pagination::bootstrap-5') }}
+                            </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>

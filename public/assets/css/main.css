@@ -5,6 +5,22 @@
   margin: 10px;
 
 }
+#pg-custom .pagination{
+            display: flex;
+    gap: 20px;
+}
+               #pg-custom .pagination .page-item{     
+    padding: 6px 20px;
+    border-radius: 5px;
+    background-color: var(--bs-gray-300);
+    color: #000000;
+  
+               }
+    
+    #pg-custom .pagination .page-item:hover{
+            background-color: #00a466;
+    color: #ffffff;
+    }
 
 .common-radius{
   border-radius: 50px !important;
