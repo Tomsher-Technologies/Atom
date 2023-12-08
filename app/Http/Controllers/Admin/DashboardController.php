@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Clients;
 use App\Models\Downloads;
 use App\Models\States;
+use App\Models\DownloadUsers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -54,7 +55,9 @@ class DashboardController extends Controller
     }
 
     public function downloads(Request $request){
-        $downloads = Downloads::orderBy('id','desc')->paginate(10);
+        $request->session()->put('down_last_url', url()->full());
+
+        $downloads = Downloads::orderBy('id','desc')->paginate(15);
         return view('admin.downloads.index')->with('downloads', $downloads);
     }
 
@@ -133,5 +136,12 @@ class DashboardController extends Controller
         }
 
         return redirect()->route('admin.downloads.index')->with('status', 'File deleted successfully');
+    }
+
+    public function downloadUsers(Request $request){
+        $downloads = Downloads::find($request->id);
+      
+        $users = DownloadUsers::with(['download'])->where("download_id", $request->id)->orderBy('id','desc')->paginate(15);
+        return view('admin.downloads.users', compact('downloads','users'));
     }
 }

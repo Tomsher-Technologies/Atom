@@ -8,6 +8,7 @@ use App\Models\Languages;
 use App\Models\TrainingCategories;
 use App\Models\TrainingCourses;
 use App\Models\TrainingCourseDetails;
+use App\Models\CourseRegistrations;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
 use Str;
@@ -178,8 +179,9 @@ class TrainingController extends Controller
         ]);
     }
 
-    public function coursesList()
+    public function coursesList(Request $request)
     {
+        $request->session()->put('last_url', url()->full());
         $courses = TrainingCourses::with(['training_category'])->orderBy('sort_order','asc')->paginate(15);
         return view('admin.training_courses.index', compact('courses'));
     }
@@ -389,5 +391,14 @@ class TrainingController extends Controller
         return redirect()->route('admin.training.courses')->with([
             'status' => "Course details updated"
         ]);
+    }
+
+    public function courseBookingLists(string $id){
+        $course = TrainingCourses::find($id);
+        $bookings = CourseRegistrations::with(['children','course'])
+                                        ->where('course_id', $id)
+                                        ->where('parent_id', 0)->orderBy('id','desc')->paginate(15);
+
+        return view('admin.training_courses.bookings', compact('bookings','course'));
     }
 }

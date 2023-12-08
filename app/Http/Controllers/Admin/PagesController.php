@@ -1348,5 +1348,40 @@ class PagesController extends Controller
         ]);
     }
 
+    public function downloadPage()
+    {
+        $data = Pages::with(['seo'])->where('page_name','download')->first();
+      
+        return view('admin.pages.downloads',compact('data'));
+    }
 
+    public function storeDownloadPage(Request $request)
+    {
+        $request->validate([
+                        'title' => 'required',
+                        'sub_title' => 'required',
+                        'heading1' => 'required'
+                    ],[
+                        '*.required' => 'This field is required.',
+                    ]);
+        $data = [
+                'page_title'            => 'Downloads',
+                'page_name'             => 'download',
+                'title'                 => $request->title,
+                'sub_title'             => $request->sub_title,
+                'heading1'              => $request->heading1,
+                'seotitle'              => $request->seotitle,
+                'ogtitle'               => $request->ogtitle,
+                'twtitle'               => $request->twtitle,
+                'seodescription'        => $request->seodescription, 
+                'og_description'        => $request->og_description,
+                'twitter_description'   => $request->twitter_description,
+                'seokeywords'           => $request->seokeywords,
+        ];
+
+        $this->savePageSettings($data);
+        return redirect()->back()->with([
+            'status' => "Page details updated"
+        ]);
+    }
 }

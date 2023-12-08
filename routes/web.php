@@ -45,6 +45,9 @@ Route::get('/blog/{slug}', [FrontendController::class, 'blogDetails'])->name('bl
 Route::get('/privacy', [FrontendController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [FrontendController::class, 'terms'])->name('terms');
 
+Route::get('/downloads', [FrontendController::class, 'downloads'])->name('downloads');
+Route::post('/download-pdf', [FrontendController::class, 'downloadPdf'])->name('download-pdf');
+
 Route::get('/search-course', [FrontendController::class, 'searchCourse'])->name('search-course');
 
 
