@@ -85,14 +85,16 @@
 
             </div>
             
-
-            <div class="row justify-center pt-90 lg:pt-50">
+            <div class="row justify-center pt-50 lg:pt-50">
                 <div class="col-auto">
+                    <div id="pg-custom">
                     <div class="pagination">
-                        {{ $courses->appends(request()->input())->links('pagination::bootstrap-4') }}
+                        {{ $courses->appends(request()->input())->links('pagination::bootstrap-5') }}
+                    </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
     @include('frontend.common.proud_blue')

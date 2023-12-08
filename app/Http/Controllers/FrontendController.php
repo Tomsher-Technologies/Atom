@@ -380,7 +380,7 @@ class FrontendController extends Controller
             $query->where('lang_id', $language);
         }
         
-        $courses = $query->paginate(3);
+        $courses = $query->paginate(15);
         // dd(DB::getQueryLog());
         // echo '<pre>';
         // print_r($result);
