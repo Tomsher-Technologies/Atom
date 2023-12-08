@@ -15,7 +15,7 @@
                                 <a href="{{ route('clients') }}">Clients</a>
                                 <a href="{{ route('blogs') }}">Blogs</a>
                                 <a href="{{ route('webinars') }}">Webinars</a>
-
+                                <a href="{{ route('downloads') }}">Downloads</a>
                             </div>
 
                         </div>
