@@ -109,7 +109,7 @@
                         <div class="col-12 p-0">
                             <div class="">
 
-                                <input type="text" name="download_id" id="download_id"  autocomplete="off" value="">
+                                <input type="hidden" name="download_id" id="download_id"  autocomplete="off" value="">
                                 <form method="POST" class="contact-form row y-gap-30" action="#" autocomplete="off">
                                     @csrf
                                     <div class="col-12 pt-20">
