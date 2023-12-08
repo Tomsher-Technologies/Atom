@@ -73,6 +73,8 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
             Route::post('/course-store', [TrainingController::class, 'storeCourse'])->name('course-store');
             Route::get('/course-edit/{course}', [TrainingController::class, 'editCourse'])->name('course-edit');
             Route::post('/course-update', [TrainingController::class, 'updateCourse'])->name('course-update'); 
+            Route::get('/course-registrations/{course}', [TrainingController::class, 'courseBookingLists'])->name('course-registrations');
+            
         });
 
         Route::group(['prefix' => 'consultancy', 'as' => 'consultancy.'], function () {
@@ -108,7 +110,9 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
         Route::get('/edit-downloads/{id}', [DashboardController::class, 'editDownloads'])->name('downloads.edit');
         Route::post('/downloads-update', [DashboardController::class, 'updateDownloads'])->name('downloads.update'); 
 
-        Route::post('/downloads-delete', [DashboardController::class, 'deleteDownloads'])->name('downloads.delete'); 
+        Route::post('/downloads-delete', [DashboardController::class, 'deleteDownloads'])->name('downloads.delete');
+        
+        Route::get('/download-users/{id}', [DashboardController::class, 'downloadUsers'])->name('download-users');
 
         Route::group(['prefix' => 'pages', 'as' => 'page.'], function () {
            
@@ -153,6 +157,9 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
             Route::get('/terms', [PagesController::class, 'termsPage'])->name('terms');
             Route::post('/store-terms', [PagesController::class, 'storeTermsPage'])->name('store-terms');
+
+            Route::get('/download', [PagesController::class, 'downloadPage'])->name('download');
+            Route::post('/store-download', [PagesController::class, 'storeDownloadPage'])->name('store-download');
         });
 
         Route::resource('roles', RoleController::class);

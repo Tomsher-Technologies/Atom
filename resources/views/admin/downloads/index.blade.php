@@ -57,6 +57,8 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <a href="{{ route('admin.downloads.edit', $down->id) }}" class="btn btn-secondary mb-1">Edit</a>
+                                                    <a href="{{ route('admin.download-users', $down->id) }}"
+                                                        class="btn btn-primary mb-1">Downloaded Users</a>
                                                 </td>
                                             </tr>
                                         @endforeach

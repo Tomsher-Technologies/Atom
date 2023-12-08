@@ -199,6 +199,12 @@
                     </a>
                 </li>
 
+                <li class="{{ (request()->routeIs('admin.page.download') ) ? 'active' : '' }}">
+                    <a href="{{ route('admin.page.download') }}">
+                        <i class="simple-icon-doc"></i> <span class="d-inline-block">Downloads</span>
+                    </a>
+                </li>
+
                 <li class="{{ (request()->routeIs('admin.page.home') ) ? 'active' : '' }}">
                     <a href="{{ route('admin.page.home') }}">
                         <i class="simple-icon-doc"></i> <span class="d-inline-block">Home Page - Main</span>

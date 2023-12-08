@@ -101,6 +101,15 @@
             </div>
         </div>
     </section>
+
+    <section class="layout-pt-md layout-pb-lg">
+        <div data-anim-wrap class="container">
+            <div class="row y-gap-50 justify-between">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14442.61344961403!2d55.270009!3d25.1811798!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f690193b50a17%3A0xb87248c2102ddca5!2sATOM%20AVIATION%20TRAINING%20ACADEMY!5e0!3m2!1sen!2sae!4v1702029642358!5m2!1sen!2sae" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
     <section class="layout-pt-lg layout-pb-lg bg-light-4" id="faqDiv">
         <div class="container" >
             <div class="row justify-center text-center">

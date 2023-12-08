@@ -19,8 +19,10 @@ class WebinarController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->session()->put('web_last_url', url()->full());
+
         $webinars = Webinars::with(['bookings'])->orderBy('id','desc')->paginate(15);
         return view('admin.webinars.index', compact('webinars'));
     }
@@ -199,7 +201,7 @@ class WebinarController extends Controller
     public function bookings(Request $request){
         $webinar = Webinars::find($request->id);
       
-        $bookings = WebinarBookings::with(['webinar'])->where("webinar_id", $request->id)->orderBy('id','ASC')->get();
+        $bookings = WebinarBookings::with(['webinar'])->where("webinar_id", $request->id)->orderBy('id','ASC')->paginate(20);
         return view('admin.webinars.bookings', compact('bookings','webinar'));
     }
 }

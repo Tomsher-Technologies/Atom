@@ -19,6 +19,8 @@ use App\Models\Webinars;
 use App\Models\Blogs;
 use App\Models\WebinarBookings;
 use App\Models\CourseRegistrations;
+use App\Models\Downloads;
+use App\Models\DownloadUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -433,6 +435,33 @@ class FrontendController extends Controller
             }
         }
         return redirect()->back()->with('status', '<span style="color: #00a659;font-weight: 700;">Successfully registered</span>');
+    }
+
+    public function downloads()
+    {
+        $page = Pages::with(['seo'])->where('page_name','download')->first();
+        $this->loadSEO($page);
+        $downloads = Downloads::where('status',1)->orderBy('sort_order','asc')->paginate(15);
+        return view('frontend.downloads',compact('page','downloads'));
+    }
+
+    public function downloadPdf(Request $request){
+        $id = $request->id;
+        $name = $request->name;
+        $email = $request->email;
+        $phone = $request->phone;
+
+        $book = new DownloadUsers;
+        $book->download_id = $id;
+        $book->name = $name;
+        $book->email = $email;
+        $book->phone = $phone;
+        $book->save();
+
+        $down = Downloads::find($id);
+
+        return $down->getFile();
+          
     }
 
 }
