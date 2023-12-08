@@ -120,6 +120,7 @@
                                     <div class="col-12 pt-20">
                                         <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Email*</label>
                                         <input type="email" name="email" id="email" autocomplete="off" placeholder="Enter Your Email" required>
+                                        <span class="error" id="invalid_email"  style="color:red;"> Invalid Email </span>
                                     </div>
                                     <div class="col-12 pt-20">
                                         <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Phone*</label>
@@ -160,13 +161,26 @@
 @push('footer')
     <script src="{{ adminAsset('js/vendor/jquery-3.3.1.min.js') }}"></script>
     <script>
-
+        $('.error').hide();
         const currentUrl = window.location.href;
         $('.downloadPdf').on('click',function(e){
             var downId = $(this).attr('data-id');
             
             $('#download_id').val(downId);
+            $('#name').val('');
+            $('#email').val('');
+            $('#phone').val('');
         });
+
+        function IsEmail(email) {
+            var regex =/^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!regex.test(email)) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
 
         $('#bookNow').on('click',function(e){
             $('#errorDiv').addClass('d-none');
@@ -179,30 +193,35 @@
                 $('#errorDiv').removeClass('d-none');
                 return false;
             }else {
-                e.preventDefault();
-                $.ajax({
-                    url: "{{ route('download-pdf') }}",
-                    type: "POST",
-                    data: {
-                        name: name,
-                        email: email,
-                        phone: phone,
-                        id: id,
-                        _token:'{{ @csrf_token() }}',
-                    },
-                    success: function (response) {
-                        
-                        var link = document.createElement('a');
-                        link.href = response;
-                        link.download = "Atom.pdf";
-                        link.click();
-                        window.location.href = currentUrl;
-                        // setTimeout(function () {
+                if (IsEmail(email) == false) {
+                    $('#invalid_email').show();
+                    return false;
+                }else{
+                    e.preventDefault();
+                    $.ajax({
+                        url: "{{ route('download-pdf') }}",
+                        type: "POST",
+                        data: {
+                            name: name,
+                            email: email,
+                            phone: phone,
+                            id: id,
+                            _token:'{{ @csrf_token() }}',
+                        },
+                        success: function (response) {
                             
-                        // }, 2000);
-                       
-                    }
-                });
+                            var link = document.createElement('a');
+                            link.href = response;
+                            link.download = "Atom.pdf";
+                            link.click();
+                            window.location.href = currentUrl;
+                            // setTimeout(function () {
+                                
+                            // }, 2000);
+                        
+                        }
+                    });
+                }
             }
         });
     </script>
