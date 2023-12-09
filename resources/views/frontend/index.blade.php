@@ -30,8 +30,8 @@
                         </p>
 
                         <div data-anim-child="slide-up delay-5" class="mainSlider__form">
-                            <form method="GET" action="{{ route('search-course') }}">
-                                <input type="text" placeholder="{{ $page->heading3 ?? '' }}" name="keyword" id="search">
+                            <form method="GET" action="{{ route('search-course') }}"  autocomplete="off">
+                                <input type="text" placeholder="{{ $page->heading3 ?? '' }}" name="keyword" id="search"  autocomplete="off">
 
                                 <button type="submit" class="button -md text-white">
                                     <i class="icon icon-search"></i>
