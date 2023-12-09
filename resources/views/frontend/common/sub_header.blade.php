@@ -15,8 +15,15 @@
                     <div class="mobile-bg js-mobile-bg"></div>
                     <div class="menu js-navList">
                         <ul class="menu__nav text-black -is-active">
-                            <li>
-                                <a data-barba href="{{ route('home') }}">Home</a>
+                            <li> 
+                                @if(Route::currentRouteName() == 'services' || Route::currentRouteName() == 'service-details')
+                                    <a data-barba href="{{ route('consultancy-services') }}">Home</a>
+                                @elseif(Route::currentRouteName() == 'trainings' || Route::currentRouteName() == 'courses' || Route::currentRouteName() == 'course-details')
+                                    <a data-barba href="{{ route('training-courses') }}">Home</a>
+                                @else
+                                    <a data-barba href="{{ route('home') }}">Home</a>
+                                @endif
+                                
                             </li>
                             <li class="menu-item-has-children -has-mega-menu">
                                 <a data-barba href="{{ route('who-we-are') }}">
@@ -206,9 +213,8 @@
                         </div>
                     </div>
                     <div class="header-right__buttons d-flex items-center ml-30 md:d-none">
-                        <a href="tel:{{ get_setting('call_back_phone')}}"
-                            class="button px-35 h-40 -gradient-1 text-white -rounded ml-30 xl:ml-20">CALL ME
-                            BACK</a>
+                        <a href="tel:+{{ get_setting('call_back_phone')}}"
+                            class="button px-35 h-40 -gradient-1 text-white -rounded ml-30 xl:ml-20">CALL ME BACK</a>
                     </div>
                 </div>
             </div>

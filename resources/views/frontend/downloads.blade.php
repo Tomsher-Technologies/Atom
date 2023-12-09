@@ -125,6 +125,7 @@
                                     <div class="col-12 pt-20">
                                         <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Phone*</label>
                                         <input type="text" name="phone" id="phone" autocomplete="off" placeholder="Enter Your Phone" required>
+                                        <span class="error" id="invalid_phone"  style="color:red;"> Invalid Phone </span>
                                     </div>
                                     <div class="col-12 pt-20 d-none" id="errorDiv">
                                         <span style="color:red;">Please fill all fields.</label>
@@ -172,6 +173,16 @@
             $('#phone').val('');
         });
 
+        function validatePhone(phone) {
+            var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+            if (filter.test(phone)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
         function IsEmail(email) {
             var regex =/^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             if (!regex.test(email)) {
@@ -184,44 +195,50 @@
 
         $('#bookNow').on('click',function(e){
             $('#errorDiv').addClass('d-none');
+            $('.error').hide();
             var name = $('#name').val();
             var email = $('#email').val();
             var phone = $('#phone').val();
             var id = $('#download_id').val();
 
+            var flag = 1;
+
+            if(email != '' && IsEmail(email) == false){
+                $('#invalid_email').show();
+                flag = 0;
+            }
+            if(phone != '' && validatePhone(phone) == false){
+                $('#invalid_phone').show();
+                flag = 0;
+            }
+
             if(name == '' || email == '' || phone == ''){
                 $('#errorDiv').removeClass('d-none');
-                return false;
-            }else {
-                if (IsEmail(email) == false) {
-                    $('#invalid_email').show();
-                    return false;
-                }else{
-                    e.preventDefault();
-                    $.ajax({
-                        url: "{{ route('download-pdf') }}",
-                        type: "POST",
-                        data: {
-                            name: name,
-                            email: email,
-                            phone: phone,
-                            id: id,
-                            _token:'{{ @csrf_token() }}',
-                        },
-                        success: function (response) {
-                            
-                            var link = document.createElement('a');
-                            link.href = response;
-                            link.download = "Atom.pdf";
-                            link.click();
-                            window.location.href = currentUrl;
-                            // setTimeout(function () {
-                                
-                            // }, 2000);
+                flag = 0;
+            }
+            if(flag == 1) {
+                e.preventDefault();
+                $.ajax({
+                    url: "{{ route('download-pdf') }}",
+                    type: "POST",
+                    data: {
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        id: id,
+                        _token:'{{ @csrf_token() }}',
+                    },
+                    success: function (response) {
                         
-                        }
-                    });
-                }
+                        var link = document.createElement('a');
+                        link.href = response;
+                        link.download = "Atom.pdf";
+                        link.click();
+                        window.location.href = currentUrl;
+                    }
+                });
+            }else{
+                return false;
             }
         });
     </script>

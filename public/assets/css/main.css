@@ -16188,4 +16188,6 @@ table.table td {
   }
 }
 
-
+label {
+  cursor: default !important;
+}
