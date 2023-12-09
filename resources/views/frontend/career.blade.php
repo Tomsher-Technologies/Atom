@@ -49,7 +49,7 @@
                                     <x-input-error name='email' />
                                 </div>
 
-                                <div class="col-12" id="job-application">
+                                <div class="col-12">
                                     <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Phone Number*</label>
                                     <input type="text" placeholder="Enter your phone number" name='phone' id='phone' value="{{ old('phone') }}">
                                     <x-input-error name='phone' />
@@ -62,7 +62,7 @@
                                     <x-input-error name='description' />
                                 </div>
                                
-                                <div class="col-md-12">
+                                <div class="col-md-12" id="job-application">
                                     <div class="form-upload col-12">
                                         <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Upload CV* (Please upload PDF file with size less than 500 KB)</label>
                                         <div class="form-upload__wrap">
@@ -92,6 +92,18 @@
                                 </div>
                             </form>
 
+                            @if ($message = Session::get('error'))
+                                <div class="col-12 mt-4">
+                                    <div class="col-12">
+                                        <div
+                                            class="d-flex items-center justify-between bg-error-1 pl-30 pr-20 py-30 rounded-8">
+                                            <div class="text-error-2 lh-14 fw-700">
+                                                {{$message}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             
                             @if ($message = Session::get('status'))
                                 <div class="col-12 mt-4">

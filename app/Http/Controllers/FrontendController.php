@@ -145,7 +145,9 @@ class FrontendController extends Controller
             'resume.max' => "Maximum file size to upload is 500 KB.",
         ]);
         if ($validator->fails()) {
-            return redirect(url()->previous() .'#job-application')->withErrors($validator)->withInput();
+            return redirect(url()->previous() .'#job-application')->withErrors($validator)->withInput()->with([
+                'error' => "Please check the error messages"
+            ]);
         }
 
         $con = new CareerApplications;
