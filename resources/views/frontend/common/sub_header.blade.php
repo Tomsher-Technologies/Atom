@@ -175,16 +175,16 @@
                         </div>
                         <div class="mobile-socials mt-10">
                             <a href="{{ get_setting('facebook') }}" class="d-flex items-center justify-center rounded-full size-40">
-                                <i class="fa fa-facebook"></i>
+                                <i class="icon-facebook"></i>
                             </a>
                             <a href="{{ get_setting('twitter') }}" class="d-flex items-center justify-center rounded-full size-40">
-                                <i class="fa fa-twitter"></i>
+                                <i class="fa-brands fa-x-twitter"></i>
                             </a>
                             <a href="{{ get_setting('instagram') }}" class="d-flex items-center justify-center rounded-full size-40">
-                                <i class="fa fa-instagram"></i>
+                                <i class="icon-instagram"></i>
                             </a>
                             <a href="{{ get_setting('linkedin') }}" class="d-flex items-center justify-center rounded-full size-40">
-                                <i class="fa fa-linkedin"></i>
+                                <i class="icon-linkedin"></i>
                             </a>
                         </div>
                     </div>

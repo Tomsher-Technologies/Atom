@@ -235,6 +235,18 @@
             
         </div>
     </section>
+    
+    <style>
+        @media (max-width: 767px){
+.masthead.-type-1 {
+    padding-bottom: 80px;
+    padding-bottom: 0px;
+        margin-bottom: 0px;
+}
+}
+    </style>
+    
+    
     @include('frontend.common.proud_blue')
 @endsection
 
