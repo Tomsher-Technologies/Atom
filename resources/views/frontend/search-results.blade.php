@@ -26,8 +26,16 @@
                                     <div class="masthead-form__item w-100  bg-white rounded-8">
                                         <div class="d-flex items-center w-100">
                                             <i class="icon-search mr-10 ml-10"></i>
-                                            <input type="text" placeholder="Your Search" name="keyword" id="search"
-                                                value="{{ $search ?? '' }}"  autocomplete="off">
+
+                                            <div class="dropdown__item shadow-1 rounded-8">
+                                                <select class="form-control " id="search" name="search">
+                                                    <option value="">Select Course</option>
+                                                    @if ($courseName != '' && $courseid != '')
+                                                        <option value="{{$courseid}}" selected>{!! $courseName !!}</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+
                                         </div>
                                     </div>
 
@@ -162,7 +170,7 @@
 
                 @if (isset($courses[0]))
                     @foreach ($courses as $item)
-                        <div data-anim-child="slide-up delay-1" class="col-lg-4 col-md-6">
+                        <div data-anim-child="" class="col-lg-4 col-md-6">
                             <a href="{{ route('course-details', ['slug' => $item->slug]) }}"
                                 class="coursesCard -type-1 rounded-8 bg-white shadow-3">
                                 <div class="relative">
@@ -250,21 +258,39 @@
     @include('frontend.common.proud_blue')
 @endsection
 
+@push('header')
+    <link rel="stylesheet" href="{{ adminAsset('css/vendor/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ adminAsset('css/vendor/select2-bootstrap.min.css') }}" />
+@endpush
+
 @push('footer')
     <script src="{{ adminAsset('js/vendor/jquery-3.3.1.min.js') }}"></script>
-  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">  </script>
+    <script src="{{ adminAsset('js/vendor/select2.full.js') }}"></script>
 
     <script type="text/javascript">
-        var route = "{{ url('autocomplete-search') }}";
-        $('#search').typeahead({
-            source: function (query, process) {
-                return $.get(route, {
-                    query: query
-                }, function (data) {
-                    return process(data);
-                });
+        var route = "{{ url('autocomplete-course') }}";
+        
+        $('#search').select2({
+            minimumInputLength: 2,
+            width: 'inherit',
+            theme: "bootstrap",
+            placeholder: 'Select Course',
+            ajax: {
+                url: route,
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results:  $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
             }
-        });
+        }); 
     </script>
 @endpush
