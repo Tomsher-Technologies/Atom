@@ -31,7 +31,7 @@
 
                         <div data-anim-child="slide-up delay-5" class="mainSlider__form">
                             <form method="GET" action="{{ route('search-course') }}">
-                                <input type="text" placeholder="{{ $page->heading3 ?? '' }}" name="keyword">
+                                <input type="text" placeholder="{{ $page->heading3 ?? '' }}" name="keyword" id="search">
 
                                 <button type="submit" class="button -md text-white">
                                     <i class="icon icon-search"></i>
@@ -242,3 +242,22 @@
         </div>
     </section>
 @endsection
+
+@push('footer')
+    <script src="{{ adminAsset('js/vendor/jquery-3.3.1.min.js') }}"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">  </script>
+
+    <script type="text/javascript">
+        var route = "{{ url('autocomplete-search') }}";
+        $('#search').typeahead({
+            source: function (query, process) {
+                return $.get(route, {
+                    query: query
+                }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
+@endpush

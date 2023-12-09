@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class, 'home'])->name('home');
+Route::get('/autocomplete-search', [FrontendController::class, 'autocompleteSearch'])->name('autocomplete-search');
+
 Route::get('/clients', [FrontendController::class, 'clients'])->name('clients');
 Route::get('/mission-vision', [FrontendController::class, 'missionVision'])->name('mission-vision');
 Route::get('/who-we-are', [FrontendController::class, 'whoWeAre'])->name('who-we-are');
