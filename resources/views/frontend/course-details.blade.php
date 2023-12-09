@@ -152,15 +152,15 @@
 
                 </div>
 
-                <div class="col-12 mt-40" id="formDiv">
+                <div class="col-12 mt-20" id="formDiv">
                     <hr>
-                    <br>
+               
                     {{-- <button name="submit" id="submit" class="button -md -purple-1 text-white">
                         <a href="{{ route('course-apply',['slug' => $course->slug]) }}">Apply Now
                     </button> --}}
 
                     <section class="layout-pt-sm layout-pb-lg">
-                        <div data-anim-wrap class="container">
+                        <div data-anim-wrap class="">
                             <div class="row y-gap-60">
                                 <div class="col-12">
                                     <div class="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100">
@@ -185,13 +185,13 @@
                                         </div>
                                         <div class="py-30 px-30">
 
-                                            <form class="contact-form row y-gap-30 repeater" id="applyCourse" method="POST"
+                                            <form class="contact-form  y-gap-30 repeater" id="applyCourse" method="POST"
                                                 action="{{ route('apply-course') }}" enctype="multipart/form-data">
                                                 @csrf
 
                                                 <div class="row y-gap-20">
 
-                                                    <div class="col-lg-4">
+                                                    <div class="col-lg-4 ">
                                                         <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Choose Course
                                                             Type*</label>
                                                     </div>
@@ -211,7 +211,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div data-repeater-list="users">
+                                                <div class="p-0" data-repeater-list="users">
 
                                                     <div data-repeater-item class="row y-gap-20">
 
@@ -264,6 +264,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                
 
                                                 <div class=" px-sm-40 px-20 col-sm-12 mb-10">
                                                     <input data-repeater-create class="button -sm -purple-1 text-white"
@@ -274,9 +275,9 @@
                                                     <div class="col-12">
                                                         <div class="col-12">
                                                             <div
-                                                                class="d-flex items-center justify-between bg-info-1 pl-30 pr-20 py-30 rounded-8">
-                                                                <div class="text-info-2 lh-14 fw-300">
-                                                                    <div class="text-18 fw-700">
+                                                                class="d-flex items-center justify-between bg-info-1 pl-30 pr-20 py-20 rounded-8">
+                                                                <div class="text-info-3 lh-14 fw-300">
+                                                                    <div class="text-20 fw-700">
                                                                         Total Price : <span
                                                                             id="priceTotal">{{ $course->price }}</span>
                                                                         AED

@@ -46,7 +46,7 @@
             </div>
         </div>
     </section>
-    <section class="hom-vd layout-pt-lg layout-pb-lg mb-90 section-bg">
+    <section class="hom-vd layout-pt-lg layout-pb-lg mb-50 section-bg">
         <!-- <div class="section-bg__item bg-dark-1" style="background-image: url(img/Training-bg.jpg);"></div> -->
         <div class="video-container"
             style="position: absolute;width: 98%;left: 1%; right: 1%;top: 0;height: 100%;z-index: -1;border-radius: 20px; overflow: hidden;">
@@ -77,7 +77,7 @@
             </div>
         </div>
     </section>
-    <section class="layout-pt-md layout-pb-md" style="background-image: url(img/bg-50.jpg); background-size: cover;">
+    <section class="layout-pt-md layout-pb-sm" style="background-image: url(img/bg-50.jpg); background-size: cover;">
         <div class="container">
             <div class="row y-gap-30 justify-between items-center">
                 <div class="col-xl-5 col-lg-6 col-md-9 lg:order-2">

@@ -1,6 +1,6 @@
 @extends('layouts.app.main')
 @section('content')
-    <section data-anim-wrap class="mainSlider -type-1 js-mainSlider">
+    <section data-anim-wrap class="mainSlider -type-1 home-m-s-b js-mainSlider">
         <div class="swiper-wrapper">
             @php
                 $sliders = getHomeSliders();
@@ -31,7 +31,7 @@
 
                         <div data-anim-child="slide-up delay-5" class="mainSlider__form">
                             <form method="GET" action="{{ route('search-course') }}">
-                                <input type="text" placeholder="{{ $page->heading3 ?? '' }}" name="keyword">
+                                <input type="text" placeholder="{{ $page->heading3 ?? '' }}" name="keyword" id="search">
 
                                 <button type="submit" class="button -md text-white">
                                     <i class="icon icon-search"></i>
@@ -92,10 +92,10 @@
         </button>
     </section>
 
-    <section class="container-fluid">
+    <section class="home-m-s2 container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <section class="course-list-slider layout-pt-xs bg-dark-2 h-100 rounded-30"
+                <section class="course-list-slider p-courses-slider-home layout-pt-xs bg-dark-2 h-100"
                     style="background-image: url({{ asset('assets/img/bg-24.jpg') }}); background-size: cover;">
                     <div data-anim-wrap class="container">
                         <div class="row y-gap-10 items-center">
@@ -173,6 +173,18 @@
                                             @endforeach
 
                                         </div>
+                                        
+                                        
+                                        <div class="p-courses-nav">
+                        <button class="section-slider-nav -prev -dark-bg-dark-2 -white  size-70 rounded-full shadow-5 js-prev">
+                          <i class="icon icon-arrow-left text-24"></i>
+                        </button>
+      
+                        <button class="section-slider-nav -next -dark-bg-dark-2 -white  size-70 rounded-full shadow-5 js-next">
+                          <i class="icon icon-arrow-right text-24"></i>
+                        </button>
+                      </div>
+                      
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +196,7 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-12">
-                        <section class="section-bg pt-30 pb-30 lg:pt-10 lg:pb-10 mb-10">
+                        <section class="section-bg pt-30 pb-30 lg:pt-10 lg:pb-10 p-cat--home">
                             <div class="section-bg__item bg-dark-1"
                                 style="background-image: url({{ $page->getImage1() }});  background-position: right; background-repeat: no-repeat; background-size: cover;">
                             </div>
@@ -212,7 +224,7 @@
                     </div>
 
                     <div class="col-md-12">
-                        <section class="section-bg pt-30 pb-30 lg:pt-10 lg:pb-10 mb-10">
+                        <section class="section-bg pt-30 pb-30 lg:pt-10 lg:pb-10  p-cat--home2">
                             <div class="section-bg__item bg-light-7"
                                 style="background-image: url({{  $page->getImage2()  }}); background-position: right; background-repeat: no-repeat; background-size: cover;">
                             </div>
@@ -242,3 +254,23 @@
         </div>
     </section>
 @endsection
+
+
+@push('footer')
+    <script src="{{ adminAsset('js/vendor/jquery-3.3.1.min.js') }}"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">  </script>
+
+    <script type="text/javascript">
+        var route = "{{ url('autocomplete-search') }}";
+        $('#search').typeahead({
+            source: function (query, process) {
+                return $.get(route, {
+                    query: query
+                }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
+@endpush

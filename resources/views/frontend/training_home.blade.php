@@ -338,7 +338,7 @@
                                                                 <img src="{{ asset('assets/img/icons/type.svg') }}"
                                                                     alt="icon">
                                                             </div>
-                                                            <div class="text-14 lh-1">{!! $pc->course_type->title ?? '' !!}</div>
+                                                            <div class="text-14 lh-1 white-space-nowrap">{!! $pc->course_type->title ?? '' !!}</div>
                                                         </div>
 
                                                         <div class="d-flex items-center">
@@ -527,6 +527,13 @@
 
         </div>
     </section>
+
+
+<style>
+    .header.-type-1 {
+            background-color: transparent !important;
+    }
+</style>
 
     @include('frontend.common.proud_blue')
 @endsection

@@ -383,10 +383,7 @@ class FrontendController extends Controller
         }
         
         $courses = $query->paginate(15);
-        // dd(DB::getQueryLog());
-        // echo '<pre>';
-        // print_r($result);
-        // die;
+       
         return view('frontend.search-results',compact('courses','search','category','language','course_type','location'));
     }
 
@@ -462,6 +459,33 @@ class FrontendController extends Controller
 
         return $down->getFile();
           
+    }
+
+    public function autocompleteSearch(Request $request){ 
+        $search = $request->get('query');
+        $filterResult = [];
+        if($search != ''){
+            $query = TrainingCourses::where('status',1)->where('name', 'LIKE', "%$search%");
+            // $query->Where(function ($query) use ($search) {
+            //     $query->where('name', 'LIKE', "%$search%"); 
+            //     $query->orWhereHas('training_category', function ($query)  use($search) {
+            //         $query->where('training_categories.name', 'LIKE', "%$search%"); 
+            //     });
+            // }); 
+            $filterResult = $query->get();
+        }
+        return response()->json($filterResult);
+    }
+
+    public function autocompleteSearchOld(Request $request){ 
+        $search = $request->get('search');
+        $filterResult = [];
+        if($search != ''){
+            $query = TrainingCourses::select("name as value", "id")->where('status',1)->where('name', 'LIKE', "%$search%");
+            
+            $filterResult = $query->get();
+        }
+        return $filterResult;
     }
 
 }

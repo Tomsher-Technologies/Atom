@@ -26,7 +26,7 @@
                                     <div class="masthead-form__item w-100  bg-white rounded-8">
                                         <div class="d-flex items-center w-100">
                                             <i class="icon-search mr-10 ml-10"></i>
-                                            <input type="text" placeholder="Your Search" name="keyword"
+                                            <input type="text" placeholder="Your Search" name="keyword" id="search"
                                                 value="{{ $search ?? '' }}">
                                         </div>
                                     </div>
@@ -235,5 +235,36 @@
             
         </div>
     </section>
+    
+    <style>
+        @media (max-width: 767px){
+.masthead.-type-1 {
+    padding-bottom: 80px;
+    padding-bottom: 0px;
+        margin-bottom: 0px;
+}
+}
+    </style>
+    
+    
     @include('frontend.common.proud_blue')
 @endsection
+
+@push('footer')
+    <script src="{{ adminAsset('js/vendor/jquery-3.3.1.min.js') }}"></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js">  </script>
+
+    <script type="text/javascript">
+        var route = "{{ url('autocomplete-search') }}";
+        $('#search').typeahead({
+            source: function (query, process) {
+                return $.get(route, {
+                    query: query
+                }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
+@endpush

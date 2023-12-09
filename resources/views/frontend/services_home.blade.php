@@ -237,6 +237,12 @@
 
         </div>
     </section>
+    
+    <style>
+    .header.-type-1 {
+            background-color: transparent !important;
+    }
+</style>
 
     @include('frontend.common.proud_blue')
 
