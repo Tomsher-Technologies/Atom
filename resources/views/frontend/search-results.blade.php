@@ -21,13 +21,13 @@
 
                         <div data-anim-child="slide-up delay-5">
                             <div class="masthead-form rounded-16 mt-30 px-10 py-10">
-                                <form action="{{ route('search-course') }}" method="GET" class="search-bar-form d-grid y-gap-10 items-center">
+                                <form action="{{ route('search-course') }}" method="GET" class="search-bar-form d-grid y-gap-10 items-center" autocomplete="off">
 
                                     <div class="masthead-form__item w-100  bg-white rounded-8">
                                         <div class="d-flex items-center w-100">
                                             <i class="icon-search mr-10 ml-10"></i>
                                             <input type="text" placeholder="Your Search" name="keyword" id="search"
-                                                value="{{ $search ?? '' }}">
+                                                value="{{ $search ?? '' }}"  autocomplete="off">
                                         </div>
                                     </div>
 
