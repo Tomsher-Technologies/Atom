@@ -70,8 +70,12 @@
                                     <div class="masthead-form__item w-100  bg-white rounded-8">
                                         <div class="d-flex items-center w-100">
                                             <i class="icon-search mr-10 ml-10"></i>
-                                            <input type="text" placeholder="Your Search" name="keyword"
-                                                value="{{ $search ?? '' }}">
+                                            <div class="dropdown__item shadow-1 rounded-8">
+                                                <select class="form-control " id="search" name="search">
+                                                    <option value="">Select Course</option>
+                                                    
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -537,3 +541,41 @@
 
     @include('frontend.common.proud_blue')
 @endsection
+
+@push('header')
+    <link rel="stylesheet" href="{{ adminAsset('css/vendor/select2.min.css') }}" />
+    <link rel="stylesheet" href="{{ adminAsset('css/vendor/select2-bootstrap.min.css') }}" />
+@endpush
+
+@push('footer')
+    <script src="{{ adminAsset('js/vendor/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ adminAsset('js/vendor/select2.full.js') }}"></script>
+    
+    <script type="text/javascript">
+        var route = "{{ url('autocomplete-course') }}";
+        
+        $('#search').select2({
+            minimumInputLength: 2,
+            width: 'inherit',
+            theme: "bootstrap",
+            placeholder: 'Select Course',
+            ajax: {
+                url: route,
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results:  $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        }); 
+    </script>
+@endpush
+

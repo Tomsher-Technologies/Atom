@@ -333,11 +333,15 @@ class FrontendController extends Controller
     }
 
     public function searchCourse(Request $request){
-        $search = $category = $language = $course_type = $location = '';
+        $search = $category = $language = $course_type = $location = $courseid = '';
+        $courseName = '';
         // DB::enableQueryLog();
 
         if($request->has('keyword')){
             $search = $request->keyword;
+        }
+        if($request->has('search')){
+            $courseid = $request->search;
         }
         if($request->has('course_type')){
             $course_type = $request->course_type;
@@ -366,6 +370,12 @@ class FrontendController extends Controller
             }); 
         }
 
+        if($courseid){
+            $query->where('id', $courseid);
+            $searchCourse = TrainingCourses::find($courseid);
+            $courseName = $searchCourse->name;
+        }
+
         if($course_type){
             $query->where('course_type_id', $course_type);
         }
@@ -384,7 +394,7 @@ class FrontendController extends Controller
         
         $courses = $query->paginate(15);
        
-        return view('frontend.search-results',compact('courses','search','category','language','course_type','location'));
+        return view('frontend.search-results',compact('courseName','courseid','courses','search','category','language','course_type','location'));
     }
 
     public function privacy()
@@ -465,7 +475,7 @@ class FrontendController extends Controller
         $search = $request->get('query');
         $filterResult = [];
         if($search != ''){
-            $query = TrainingCourses::where('status',1)->where('name', 'LIKE', "%$search%");
+            $query = TrainingCourses::where('status',1)->where('name', 'LIKE', "%$search%")->orderBy('name','ASC');
             // $query->Where(function ($query) use ($search) {
             //     $query->where('name', 'LIKE', "%$search%"); 
             //     $query->orWhereHas('training_category', function ($query)  use($search) {
@@ -486,6 +496,25 @@ class FrontendController extends Controller
             $filterResult = $query->get();
         }
         return $filterResult;
+    }
+
+    public function ajaxCourses(Request $request)
+    {
+    	$data = [];
+
+        if($request->has('q')){
+            $search = $request->q;
+           
+            $query = TrainingCourses::where('status',1)->orderBy('name','ASC');
+           
+            if($search){
+                $query->Where(function ($query) use ($search) {
+                    $query->orWhere('name', 'LIKE', "%$search%");   
+                }); 
+            }           
+            $data = $query->get();
+        }
+        return response()->json($data);
     }
 
 }
