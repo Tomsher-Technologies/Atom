@@ -165,7 +165,7 @@ class FrontendController extends Controller
 
         Mail::to(env('MAIL_ADMIN'))->queue(new CareerEnquiry($con,$filePath));
 
-        return redirect(url()->previous() .'#content-div')->with([
+        return redirect(url()->previous() .'#job-application')->with([
             'status' => "Thank you for getting in touch. Our team will contact you shortly."
         ]);
    }
