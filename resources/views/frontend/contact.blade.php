@@ -77,7 +77,7 @@
                             </div>
 
                             <div class="col-12">
-                                <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Subject</label>
+                                <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Subject*</label>
                                 <input type="text" placeholder="Enter subject" name='subject' id='subject' value="{{ old('subject') }}">
                                 <x-input-error name='subject' />
                             </div>

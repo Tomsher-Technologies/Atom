@@ -82,7 +82,7 @@
                     <div class="d-flex justify-between items-center py-20 px-25 rounded-16 shadow-4  bg-info-1 ">
                         <div>
                             <div class="lh-1 fw-500"> Course Fee</div>
-                            <div class="text-20 lh-1 fw-700 text-dark-1 mt-20">{{ $course->price }} AED</div>
+                            <div class="text-20 lh-1 fw-700 text-dark-1 mt-20">AED {{ $course->price }} </div>
                         </div>
 
                         <img src="{{ asset('assets/img/icons/type.svg') }}" alt="icon">
@@ -279,8 +279,8 @@
                                                                 <div class="text-info-3 lh-14 fw-300">
                                                                     <div class="text-20 fw-700">
                                                                         Total Price : <span
-                                                                            id="priceTotal">{{ $course->price }}</span>
-                                                                        AED
+                                                                            id="priceTotal">AED {{ $course->price }}</span>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -381,7 +381,9 @@
                 required: true
             });
             $("#phone" + count).rules('add', {
-                required: true
+                required: true,
+                minlength: 6,
+                number: true
             });
 
         }
@@ -396,7 +398,9 @@
                     required: true
                 },
                 'users[0][phone]': {
-                    required: true
+                    required: true,
+                    minlength: 6,
+                    number: true
                 },
             },
             messages: {

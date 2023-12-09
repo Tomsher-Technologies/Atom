@@ -27,6 +27,8 @@
     <section class="layout-pt-md layout-pb-lg">
         <div data-anim-wrap class="container">
             <div class="row y-gap-60">
+               
+
                 <div class="col-12">
                     <div class="rounded-16 bg-white -dark-bg-dark-1 shadow-4 h-100" >
                         <div class="d-flex items-center py-20 px-30 border-bottom-light">
@@ -89,8 +91,23 @@
                                     </div>
                                 </div>
                             </form>
-                            <x-status />
+
+                            
+                            @if ($message = Session::get('status'))
+                                <div class="col-12 mt-4">
+                                    <div class="col-12">
+                                        <div
+                                            class="d-flex items-center justify-between bg-success-1 pl-30 pr-20 py-30 rounded-8">
+                                            <div class="text-info-2 lh-14 fw-300">
+                                                <x-status />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
+
+                        
                     </div>
                 </div>
             </div>
@@ -107,7 +124,7 @@
             color: red !important;
         }
         .alert-success{
-            margin-top: 20px;
+            /* margin-top: 20px; */
             color: #00a659;
             font-weight: 700;
         }
