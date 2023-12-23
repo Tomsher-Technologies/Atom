@@ -73,6 +73,8 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
             Route::post('/course-store', [TrainingController::class, 'storeCourse'])->name('course-store');
             Route::get('/course-edit/{course}', [TrainingController::class, 'editCourse'])->name('course-edit');
             Route::post('/course-update', [TrainingController::class, 'updateCourse'])->name('course-update'); 
+            Route::get('/course-registrations/{course}', [TrainingController::class, 'courseBookingLists'])->name('course-registrations');
+            
         });
 
         Route::group(['prefix' => 'consultancy', 'as' => 'consultancy.'], function () {
@@ -100,6 +102,17 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
         Route::get('/edit-faq/{id}', [PagesController::class, 'editFaq'])->name('faq.edit');
         Route::post('/faq-update', [PagesController::class, 'updateFaq'])->name('faq.update'); 
         Route::post('/delete-faq', [PagesController::class, 'deleteFaq'])->name('faq.delete');
+
+        Route::get('/downloads', [DashboardController::class, 'downloads'])->name('downloads.index');
+        Route::get('/create-downloads', [DashboardController::class, 'createDownloads'])->name('downloads.create');
+        Route::post('/store-downloads', [DashboardController::class, 'storeDownloads'])->name('downloads.store');
+
+        Route::get('/edit-downloads/{id}', [DashboardController::class, 'editDownloads'])->name('downloads.edit');
+        Route::post('/downloads-update', [DashboardController::class, 'updateDownloads'])->name('downloads.update'); 
+
+        Route::post('/downloads-delete', [DashboardController::class, 'deleteDownloads'])->name('downloads.delete');
+        
+        Route::get('/download-users/{id}', [DashboardController::class, 'downloadUsers'])->name('download-users');
 
         Route::group(['prefix' => 'pages', 'as' => 'page.'], function () {
            
@@ -138,6 +151,15 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
             Route::get('/blogs', [PagesController::class, 'blogsPage'])->name('blogs');
             Route::post('/store-blogs', [PagesController::class, 'storeBlogsPage'])->name('store-blogs');
+
+            Route::get('/privacy', [PagesController::class, 'privacyPage'])->name('privacy');
+            Route::post('/store-privacy', [PagesController::class, 'storePrivacyPage'])->name('store-privacy');
+
+            Route::get('/terms', [PagesController::class, 'termsPage'])->name('terms');
+            Route::post('/store-terms', [PagesController::class, 'storeTermsPage'])->name('store-terms');
+
+            Route::get('/download', [PagesController::class, 'downloadPage'])->name('download');
+            Route::post('/store-download', [PagesController::class, 'storeDownloadPage'])->name('store-download');
         });
 
         Route::resource('roles', RoleController::class);

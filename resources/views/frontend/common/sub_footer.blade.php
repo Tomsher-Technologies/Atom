@@ -36,7 +36,7 @@
                         <div class="footer-header-socials__title text-black">{{ get_setting('footer_social_title') ?? '' }}</div>
                         <div class="footer-header-socials__list">
                             <a href="{{ get_setting('facebook') }}"><i class="icon-facebook"></i></a>
-                            <a href="{{ get_setting('twitter') }}"><i class="icon-twitter"></i></a>
+                            <a href="{{ get_setting('twitter') }}"><i class="fa-brands fa-x-twitter"></i></a>
                             <a href="{{ get_setting('instagram') }}"><i class="icon-instagram"></i></a>
                             <a href="{{ get_setting('linkedin') }}"><i class="icon-linkedin"></i></a>
                         </div>
@@ -55,6 +55,7 @@
                         <a href="{{ route('clients') }}">Clients</a>
                         <a href="{{ route('blogs') }}">Blogs</a>
                         <a href="{{ route('webinars') }}">Webinars</a>
+                        <a href="{{ route('downloads') }}">Downloads</a>
                     </div>
                 </div>
 
@@ -87,9 +88,9 @@
                     <div class="text-17 fw-500 text-black uppercase mb-25">{{ get_setting('footer_link3_title') ?? '' }}</div>
                     <div class="ft-text-dark-all d-flex y-gap-10 flex-column">
                         <a href="{{ route('career') }}">Career</a>
-                        <a href="{{ route('contact') }}">FAQS</a>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Use</a>
+                        <a href="{{ route('contact') }}#faqDiv">FAQS</a>
+                        <a href="{{ route('privacy') }}">Privacy Policy</a>
+                        <a href="{{ route('terms') }}">Terms of Use</a>
                         <a href="{{ route('contact') }}">Contact Us</a>
                     </div>
                 </div>

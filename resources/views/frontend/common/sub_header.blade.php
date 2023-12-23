@@ -15,8 +15,15 @@
                     <div class="mobile-bg js-mobile-bg"></div>
                     <div class="menu js-navList">
                         <ul class="menu__nav text-black -is-active">
-                            <li>
-                                <a data-barba href="{{ route('home') }}">Home</a>
+                            <li> 
+                                @if(Route::currentRouteName() == 'services' || Route::currentRouteName() == 'service-details')
+                                    <a data-barba href="{{ route('consultancy-services') }}">Home</a>
+                                @elseif(Route::currentRouteName() == 'trainings' || Route::currentRouteName() == 'courses' || Route::currentRouteName() == 'course-details')
+                                    <a data-barba href="{{ route('training-courses') }}">Home</a>
+                                @else
+                                    <a data-barba href="{{ route('home') }}">Home</a>
+                                @endif
+                                
                             </li>
                             <li class="menu-item-has-children -has-mega-menu">
                                 <a data-barba href="{{ route('who-we-are') }}">
@@ -82,10 +89,15 @@
                                                     {{-- <h4 class="text-17 fw-500 mb-20 text-white"> Courses</h4> --}}
                                                     @php
                                                         $header_courses = get_header_courses();
+                                                        $mob_header_courses = '';
                                                     @endphp
                                                     <ul class="mega__list">
                                                         @foreach ($header_courses  as $hc)
                                                             <a href="{{ route('courses',['slug' => $hc['slug'] ]) }}">{{ $hc['name'] }}</a>
+
+                                                            @php
+                                                                $mob_header_courses .= '<li><a data-barba href="'.route('courses',['slug' => $hc['slug'] ]) .'">'.$hc['name'].'</a></li>';
+                                                            @endphp
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -94,14 +106,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <ul class="subnav d-none xl:d-block">
+                                <ul class="subnav d-none xl:d-block">
                                     <li class="menu__backButton js-nav-list-back">
                                         <a href="#"><i class="icon-chevron-left text-13 mr-10"></i> Courses</a>
                                     </li>
-                                    <li><a data-barba href="">Consulting Solutions</a></li>
-                                    <li><a data-barba href="">Executive Coaching</a></li>
-                                    <li><a data-barba href="">Meirc Talent Tool (MTT)</a></li>
-                                </ul> --}}
+                                    {!! $mob_header_courses !!}
+                                </ul>
                             </li>
                             <li class="menu-item-has-children -has-mega-menu">
                                 <a data-barba href="#">Services <i class="icon-chevron-right text-13 ml-10"></i></a>
@@ -121,10 +131,14 @@
                                                     {{-- <h4 class="text-17 fw-500 mb-20 text-white"> Courses</h4> --}}
                                                     @php
                                                         $header_services = get_header_services();
+                                                        $mob_header_services = '';
                                                     @endphp
                                                     <ul class="mega__list">
                                                         @foreach ($header_services  as $hs)
                                                             <a href="{{ route('service-details',['slug' => $hs['slug'] ]) }}">{{ $hs['name'] }}</a>
+                                                            @php
+                                                                $mob_header_services .= '<li><a data-barba href="'.route('service-details',['slug' => $hs['slug'] ]).'">'.$hs['name'].'</a></li>';
+                                                            @endphp
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -133,14 +147,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <ul class="subnav d-none xl:d-block">
+                                <ul class="subnav d-none xl:d-block">
                                     <li class="menu__backButton js-nav-list-back">
                                         <a href="#"><i class="icon-chevron-left text-13 mr-10"></i> Courses</a>
                                     </li>
-                                    <li><a data-barba href="">Consulting Solutions</a></li>
-                                    <li><a data-barba href="">Executive Coaching</a></li>
-                                    <li><a data-barba href="">Meirc Talent Tool (MTT)</a></li>
-                                </ul> --}}
+                                    {!! $mob_header_services !!}
+                                </ul>
                             </li>
                             <li class="menu-item-has-children">
                                 <a data-barba href="#">MEDIA CENTER <i class="icon-chevron-right text-13 ml-10"></i></a>
@@ -170,16 +182,16 @@
                         </div>
                         <div class="mobile-socials mt-10">
                             <a href="{{ get_setting('facebook') }}" class="d-flex items-center justify-center rounded-full size-40">
-                                <i class="fa fa-facebook"></i>
+                                <i class="icon-facebook"></i>
                             </a>
                             <a href="{{ get_setting('twitter') }}" class="d-flex items-center justify-center rounded-full size-40">
-                                <i class="fa fa-twitter"></i>
+                                <i class="fa-brands fa-x-twitter"></i>
                             </a>
                             <a href="{{ get_setting('instagram') }}" class="d-flex items-center justify-center rounded-full size-40">
-                                <i class="fa fa-instagram"></i>
+                                <i class="icon-instagram"></i>
                             </a>
                             <a href="{{ get_setting('linkedin') }}" class="d-flex items-center justify-center rounded-full size-40">
-                                <i class="fa fa-linkedin"></i>
+                                <i class="icon-linkedin"></i>
                             </a>
                         </div>
                     </div>
@@ -201,9 +213,8 @@
                         </div>
                     </div>
                     <div class="header-right__buttons d-flex items-center ml-30 md:d-none">
-                        <a href="#"
-                            class="button px-35 h-40 -gradient-1 text-white -rounded ml-30 xl:ml-20">CALL ME
-                            BACK</a>
+                        <a href="tel:+{{ get_setting('call_back_phone')}}"
+                            class="button px-35 h-40 -gradient-1 text-white -rounded ml-30 xl:ml-20">CALL ME BACK</a>
                     </div>
                 </div>
             </div>

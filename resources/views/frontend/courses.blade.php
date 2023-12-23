@@ -18,7 +18,7 @@
 
                 <div class="col-xl-5 col-lg-11">
 
-                    <div data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white mt-25 lh-16">
+                    <div data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white lh-16">
                         {!! $category[0]->description ?? '' !!}
                     </div>
 
@@ -36,11 +36,11 @@
                         <div data-anim-child="slide-up delay-1" class="col-lg-4 col-md-6">
                             <a href="{{ route('course-details',['slug' => $item->slug]) }}" class="coursesCard -type-1 rounded-8 bg-white shadow-3">
                                 <div class="relative">
-                                    <div class="coursesCard__image overflow-hidden rounded-top-8">
+                                    <div class="coursesCard__image overflow-hidden rounded-8">
                                         <img class="w-1/1" src="{{ $item->getCourseImage() }}" alt="image">
-                                        <div class="coursesCard__image_overlay rounded-top-8"></div>
+                                        <div class="coursesCard__image_overlay rounded-8"></div>
                                     </div>
-                                    <div class="d-flex justify-between py-10 px-10 absolute-full-center z-3">
+                                    <div class="d-flex justify-between py-10 px-10 absolute-full-center z-3 ">
         
                                     </div>
                                 </div>
@@ -59,14 +59,14 @@
                                             <div class="mr-8">
                                                 <img src="{{ asset('assets/img/icons/lang.svg') }}" alt="icon">
                                             </div>
-                                            <div class="text-14 lh-1">{!! $item->language->title ?? '' !!}</div>
+                                            <div class="text-14 lh-1 white-space-nowrap">{!! $item->language->title ?? '' !!}</div>
                                         </div>
         
                                         <div class="d-flex items-center">
                                             <div class="mr-8">
                                                 <img src="{{ asset('assets/img/icons/type.svg') }}" alt="icon">
                                             </div>
-                                            <div class="text-14 lh-1">{!! $item->course_type->title ?? '' !!}</div>
+                                            <div class="text-14 lh-1 white-space-nowrap">{!! $item->course_type->title ?? '' !!}</div>
                                         </div>
         
                                         <div class="d-flex items-center">
@@ -85,14 +85,16 @@
 
             </div>
             
-
-            <div class="row justify-center pt-90 lg:pt-50">
+            <div class="row justify-center pt-50 lg:pt-50">
                 <div class="col-auto">
+                    <div id="pg-custom">
                     <div class="pagination">
-                        {{ $courses->appends(request()->input())->links('pagination::bootstrap-4') }}
+                        {{ $courses->appends(request()->input())->links('pagination::bootstrap-5') }}
+                    </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
     @include('frontend.common.proud_blue')

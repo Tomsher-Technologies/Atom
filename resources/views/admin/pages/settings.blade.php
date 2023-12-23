@@ -40,6 +40,13 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="exampleInputEmail1"> Header Call Me Back Number <span class="text-info"></span></label>
+                                <input type="hidden" name="types[]" value="call_back_phone">
+                                <input class="form-control" type="number" name="call_back_phone" value="{{ old('call_back_phone', get_setting('call_back_phone') ?? '') }}">
+                                <x-input-error name='call_back_phone' />
+                            </div>
+
+                            <div class="form-group">
                                 <h4> Footer Section</h4>
                             </div>
 

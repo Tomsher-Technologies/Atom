@@ -15,7 +15,7 @@
                                 <a href="{{ route('clients') }}">Clients</a>
                                 <a href="{{ route('blogs') }}">Blogs</a>
                                 <a href="{{ route('webinars') }}">Webinars</a>
-
+                                <a href="{{ route('downloads') }}">Downloads</a>
                             </div>
 
                         </div>
@@ -33,9 +33,9 @@
                             <div class="text-17 fw-500 text-white uppercase mb-25">{{ get_setting('footer_link3_title') ?? '' }} </div>
                             <div class="d-flex y-gap-10 flex-column text-white">
                                 <a href="{{ route('career') }}">Career</a>
-                                <a href="{{ route('contact') }}">FAQS</a>
-                                <a href="#">Privacy Policy</a>
-                                <a href="#">Terms of Use</a>
+                                <a href="{{ route('contact') }}#faqDiv">FAQS</a>
+                                <a href="{{ route('privacy') }}">Privacy Policy</a>
+                                <a href="{{ route('terms') }}">Terms of Use</a>
                                 <a href="{{ route('contact') }}">Contact Us</a>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="col-lg-5 col-md-5">
-                <div class="pt-60 pl-30 pb-30 h-100  rounded-30"
+                <div class="pt-60 pl-30 pr-30 pb-30 h-100  rounded-30"
                     style="background-image: url({{ asset('assets/img/bg-23.jpg') }}); background-size: cover;background-position: right;">
                     <div class="pt-40 text-center"><img class="m-auto" width="150"
                             src="{{ asset('assets/img/logow.png') }}" alt="">
@@ -65,7 +65,7 @@
                               <i class="text-blue-1 icon-facebook"></i>
                             </a>
                             <a href="{{ get_setting('twitter') }}" class="bg-white size-40 d-flex justify-center items-center text-white rounded-30">
-                              <i class="text-blue-1 icon-twitter"></i>
+                              <i class="text-blue-1 fa-brands fa-x-twitter"></i>
                             </a>
                             <a href="{{ get_setting('instagram') }}" class="bg-white size-40 d-flex justify-center items-center text-white rounded-30">
                               <i class="text-blue-1 icon-instagram"></i>

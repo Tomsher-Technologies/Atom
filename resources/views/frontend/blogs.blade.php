@@ -20,7 +20,7 @@
 
                 <div class="col-xl-5 col-lg-11">
 
-                    <p data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white mt-25 lh-16">
+                    <p data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white  lh-16">
                         {!! $page->description ?? '' !!}
                     </p>
 
@@ -43,7 +43,8 @@
                                     </div>
                                     <div class="blogCard__content mt-20">
                                         <h4 class="blogCard__title text-18 lh-15 fw-500 mt-5">
-                                            {{ $blog->title }}
+                                            {{  mb_strimwidth(strip_tags($blog->title), 0, 60, '...') }}
+                                           
                                         </h4>
                                         <div class="blogCard__date mt-5">{{ date('M d, Y', strtotime($blog->blog_date)) }}</div>
                                     </div>
@@ -55,13 +56,16 @@
 
                     </div>
 
-                    <div class="row justify-center pt-60 lg:pt-40">
+                    <div class="row justify-center pt-50 lg:pt-50">
                         <div class="col-auto">
+                            <div id="pg-custom">
                             <div class="pagination">
-                                {{ $blogs->appends(request()->input())->links('pagination::bootstrap-4') }}
+                                {{ $blogs->appends(request()->input())->links('pagination::bootstrap-5') }}
+                            </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>

@@ -41,6 +41,14 @@
                     </li>
                 @endcan
 
+                @can('downloads')
+                    <li class="{{ request()->routeIs('admin.downloads*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.downloads.index') }}">
+                            <i class="iconsminds-download"></i>Downloads
+                        </a>
+                    </li>
+                @endcan
+
                 @can('webinars')
                     <li class="{{ request()->routeIs('admin.webinars*') ? 'active' : '' }}">
                         <a href="{{ route('admin.webinars.index') }}">
@@ -191,6 +199,12 @@
                     </a>
                 </li>
 
+                <li class="{{ (request()->routeIs('admin.page.download') ) ? 'active' : '' }}">
+                    <a href="{{ route('admin.page.download') }}">
+                        <i class="simple-icon-doc"></i> <span class="d-inline-block">Downloads</span>
+                    </a>
+                </li>
+
                 <li class="{{ (request()->routeIs('admin.page.home') ) ? 'active' : '' }}">
                     <a href="{{ route('admin.page.home') }}">
                         <i class="simple-icon-doc"></i> <span class="d-inline-block">Home Page - Main</span>
@@ -212,6 +226,18 @@
                 <li class="{{ (request()->routeIs('admin.page.mission') ) ? 'active' : '' }}">
                     <a href="{{ route('admin.page.mission') }}">
                         <i class="simple-icon-doc"></i> <span class="d-inline-block">Mission & Vision</span>
+                    </a>
+                </li>
+
+                <li class="{{ (request()->routeIs('admin.page.privacy') ) ? 'active' : '' }}">
+                    <a href="{{ route('admin.page.privacy') }}">
+                        <i class="simple-icon-doc"></i> <span class="d-inline-block">Privacy Policy</span>
+                    </a>
+                </li>
+
+                <li class="{{ (request()->routeIs('admin.page.terms') ) ? 'active' : '' }}">
+                    <a href="{{ route('admin.page.terms') }}">
+                        <i class="simple-icon-doc"></i> <span class="d-inline-block">Terms & Conditions</span>
                     </a>
                 </li>
 

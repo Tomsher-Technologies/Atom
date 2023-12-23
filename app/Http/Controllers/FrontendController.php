@@ -18,6 +18,9 @@ use App\Models\TrainingCourses;
 use App\Models\Webinars;
 use App\Models\Blogs;
 use App\Models\WebinarBookings;
+use App\Models\CourseRegistrations;
+use App\Models\Downloads;
+use App\Models\DownloadUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -142,7 +145,9 @@ class FrontendController extends Controller
             'resume.max' => "Maximum file size to upload is 500 KB.",
         ]);
         if ($validator->fails()) {
-            return redirect(url()->previous() .'#job-application')->withErrors($validator)->withInput();
+            return redirect(url()->previous() .'#job-application')->withErrors($validator)->withInput()->with([
+                'error' => "Please check the error messages"
+            ]);
         }
 
         $con = new CareerApplications;
@@ -160,7 +165,7 @@ class FrontendController extends Controller
 
         Mail::to(env('MAIL_ADMIN'))->queue(new CareerEnquiry($con,$filePath));
 
-        return redirect(url()->previous() .'#content-div')->with([
+        return redirect(url()->previous() .'#job-application')->with([
             'status' => "Thank you for getting in touch. Our team will contact you shortly."
         ]);
    }
@@ -330,11 +335,15 @@ class FrontendController extends Controller
     }
 
     public function searchCourse(Request $request){
-        $search = $category = $language = $course_type = $location = '';
+        $search = $category = $language = $course_type = $location = $courseid = '';
+        $courseName = '';
         // DB::enableQueryLog();
 
         if($request->has('keyword')){
             $search = $request->keyword;
+        }
+        if($request->has('search')){
+            $courseid = $request->search;
         }
         if($request->has('course_type')){
             $course_type = $request->course_type;
@@ -363,6 +372,12 @@ class FrontendController extends Controller
             }); 
         }
 
+        if($courseid){
+            $query->where('id', $courseid);
+            $searchCourse = TrainingCourses::find($courseid);
+            $courseName = $searchCourse->name;
+        }
+
         if($course_type){
             $query->where('course_type_id', $course_type);
         }
@@ -380,10 +395,128 @@ class FrontendController extends Controller
         }
         
         $courses = $query->paginate(15);
-        // dd(DB::getQueryLog());
-        // echo '<pre>';
-        // print_r($result);
-        // die;
-        return view('frontend.search-results',compact('courses','search','category','language','course_type','location'));
+       
+        return view('frontend.search-results',compact('courseName','courseid','courses','search','category','language','course_type','location'));
     }
+
+    public function privacy()
+    {
+        $page = Pages::with(['seo'])->where('page_name','privacy')->first();
+        $this->loadSEO($page);
+        return view('frontend.privacy',compact('page'));
+    }
+
+    public function terms()
+    {
+        $page = Pages::with(['seo'])->where('page_name','terms')->first();
+        $this->loadSEO($page);
+        return view('frontend.terms',compact('page'));
+    }
+
+    public function courseApply(Request $request)
+    {
+        $slug = $request->slug;
+        $course = TrainingCourses::with(['training_category','course_details'])->where('status',1)->where('slug',$slug)->first();
+        
+        return view('frontend.course-apply',compact('course'));
+    }
+
+    public function storeCourseApply(Request $request){
+        $type = $request->registration_type;
+        $course_id = $request->course_id;
+
+        $users = $request->users;
+        $parent_id = 0;
+        foreach ($users as $key => $user) {
+            $data = [
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'phone' => $user['phone'],
+                'course_id' => $course_id,
+                'parent_id' => ($key == 0) ? 0 : $parent_id,
+                'price' => $request->price,
+                'type' =>  $type
+            ];
+            
+            $registration = CourseRegistrations::create($data);
+            if($key == 0){
+                $parent_id = $registration->id;
+            }
+        }
+        return redirect()->back()->with('status', '<span style="color: #00a659;font-weight: 700;">Successfully registered</span>');
+    }
+
+    public function downloads()
+    {
+        $page = Pages::with(['seo'])->where('page_name','download')->first();
+        $this->loadSEO($page);
+        $downloads = Downloads::where('status',1)->orderBy('sort_order','asc')->paginate(15);
+        return view('frontend.downloads',compact('page','downloads'));
+    }
+
+    public function downloadPdf(Request $request){
+        $id = $request->id;
+        $name = $request->name;
+        $email = $request->email;
+        $phone = $request->phone;
+
+        $book = new DownloadUsers;
+        $book->download_id = $id;
+        $book->name = $name;
+        $book->email = $email;
+        $book->phone = $phone;
+        $book->save();
+
+        $down = Downloads::find($id);
+
+        return $down->getFile();
+          
+    }
+
+    public function autocompleteSearch(Request $request){ 
+        $search = $request->get('query');
+        $filterResult = [];
+        if($search != ''){
+            $query = TrainingCourses::where('status',1)->where('name', 'LIKE', "%$search%")->orderBy('name','ASC');
+            // $query->Where(function ($query) use ($search) {
+            //     $query->where('name', 'LIKE', "%$search%"); 
+            //     $query->orWhereHas('training_category', function ($query)  use($search) {
+            //         $query->where('training_categories.name', 'LIKE', "%$search%"); 
+            //     });
+            // }); 
+            $filterResult = $query->get();
+        }
+        return response()->json($filterResult);
+    }
+
+    public function autocompleteSearchOld(Request $request){ 
+        $search = $request->get('search');
+        $filterResult = [];
+        if($search != ''){
+            $query = TrainingCourses::select("name as value", "id")->where('status',1)->where('name', 'LIKE', "%$search%");
+            
+            $filterResult = $query->get();
+        }
+        return $filterResult;
+    }
+
+    public function ajaxCourses(Request $request)
+    {
+    	$data = [];
+
+        if($request->has('q')){
+            $search = $request->q;
+           
+            $query = TrainingCourses::where('status',1)->orderBy('name','ASC');
+           
+            if($search){
+                $query->Where(function ($query) use ($search) {
+                    $query->orWhere('name', 'LIKE', "%$search%");   
+                }); 
+            }           
+            $data = $query->get();
+        }
+        return response()->json($data);
+    }
+
 }

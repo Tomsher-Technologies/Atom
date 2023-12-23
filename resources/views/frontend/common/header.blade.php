@@ -25,7 +25,7 @@
 
                 <div class="d-none xl:d-flex items-center px-20 py-20 border-bottom-light">
 
-                  <a href="" class="text-dark-1 ml-30">CALL ME BACK </a>
+                  <a href="tel:+{{ get_setting('call_back_phone')}}" class="text-dark-1 ml-30">CALL ME BACK </a>
                 </div>
 
 
@@ -102,7 +102,7 @@
 
           <div class="header-right__buttons  d-flex items-center ml-30 xl:ml-20 md:d-none">
 
-            <a href="" class="button px-35 h-40 -gradient-1 text-white -rounded ml-30 xl:ml-20">CALL ME BACK</a>
+            <a href="tel:+{{ get_setting('call_back_phone')}}" class="button px-35 h-40 -gradient-1 text-white -rounded ml-30 xl:ml-20">CALL ME BACK</a>
           </div>
         </div>
       </div>

@@ -20,7 +20,7 @@
 
                 <div class="col-xl-5 col-lg-11">
 
-                    <p data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white mt-25 lh-16">
+                    <p data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white lh-16">
                         {!! $page->description ?? '' !!}
                     </p>
 
@@ -50,13 +50,17 @@
                 
             </div>
 
-            <div class="row justify-center pt-90 lg:pt-50">
+            
+            <div class="row justify-center pt-50 lg:pt-50">
                 <div class="col-auto">
+                    <div id="pg-custom">
                     <div class="pagination">
-                        {{ $services->appends(request()->input())->links('pagination::bootstrap-4') }}
+                        {{ $services->appends(request()->input())->links('pagination::bootstrap-5') }}
+                    </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 

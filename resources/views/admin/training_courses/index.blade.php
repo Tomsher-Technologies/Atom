@@ -51,6 +51,9 @@
                                             <td class="text-center">
                                                 <a href="{{ route('admin.training.course-edit', $cour->id) }}"
                                                     class="btn btn-secondary mb-1">Edit</a>
+
+                                                <a href="{{ route('admin.training.course-registrations', $cour->id) }}"
+                                                        class="btn btn-primary mb-1">Registrations</a>
                                             </td>
                                         </tr>
                                     @endforeach

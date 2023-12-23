@@ -24,7 +24,7 @@
 
                 <div class="col-xl-5 col-lg-11">
 
-                    <div data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white mt-25 lh-16">
+                    <div data-anim-child="slide-up delay-2" class="masthead__text text-20 text-white lh-16">
                         {!! $page->description ?? '' !!}
                     </div>
 
@@ -33,7 +33,7 @@
         </div>
     </section>
 
-    <section class="layout-pt-md layout-pb-sm border-top-light">
+    <section class="layout-pt-md layout-pb-sm">
         <div data-anim-wrap class="container">
             <div class="row justify-center text-center">
                 <div class="col-auto">
@@ -58,8 +58,8 @@
                                     <div class="eventCard__date">
                                     
                                         <span class="text-45 lh-1 fw-700 text-dark-1">{{ date('d', strtotime($up->webinar_date)) }}</span>
-                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('M', strtotime($up->webinar_date)) }}</span>
-                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('Y', strtotime($up->webinar_date)) }}</span>
+                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('M', strtotime($up->webinar_date)) }},</span>
+                                        <span class="text-18 lh-1 fw-500 ml-5">{{ date('Y', strtotime($up->webinar_date)) }}</span>
                                     </div>
         
                                     <h4 class="eventCard__title text-24 lh-15 fw-500">
@@ -130,8 +130,8 @@
                                 <div class="eventCard -type-3 bg-light-4 rounded-8">
                                     <div class="eventCard__date">
                                         <span class="text-45 lh-1 fw-700 text-dark-1">{{ date('d', strtotime($comp->webinar_date)) }}</span>
-                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('M', strtotime($comp->webinar_date)) }}</span>
-                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('Y', strtotime($comp->webinar_date)) }}</span>
+                                        <span class="text-18 lh-1 fw-500 ml-15">{{ date('M', strtotime($comp->webinar_date)) }},</span>
+                                        <span class="text-18 lh-1 fw-500 ml-5">{{ date('Y', strtotime($comp->webinar_date)) }}</span>
                                     </div>
 
                                     <h4 class="eventCard__title text-24 lh-15 fw-500">

@@ -1184,7 +1184,7 @@ class PagesController extends Controller
             'title' => $request->get('title'),
             'description'    => $request->description,
             'status'    => $request->status,
-            'sort_order' => $request->sort_order
+            'sort_order' => ($request->sort_order != '') ? $request->sort_order : 0,
         ]);
         return redirect()->route('admin.faq.index')->with([
             'status' => "FAQ Created"
@@ -1274,4 +1274,114 @@ class PagesController extends Controller
         ]);
     }
 
+    public function privacyPage()
+    {
+        $data = Pages::with(['seo'])->where('page_name','privacy')->first();
+      
+        return view('admin.pages.privacy',compact('data'));
+    }
+
+    public function storePrivacyPage(Request $request)
+    {
+        $request->validate([
+                        'title' => 'required',
+                        'sub_title' => 'required',
+                        'description' => 'required'
+                    ],[
+                        '*.required' => 'This field is required.',
+                    ]);
+        $data = [
+                'page_title'            => 'Privacy Policy',
+                'page_name'             => 'privacy',
+                'title'                 => $request->title,
+                'sub_title'             => $request->sub_title,
+                'description'           => $request->description,
+                'seotitle'              => $request->seotitle,
+                'ogtitle'               => $request->ogtitle,
+                'twtitle'               => $request->twtitle,
+                'seodescription'        => $request->seodescription, 
+                'og_description'        => $request->og_description,
+                'twitter_description'   => $request->twitter_description,
+                'seokeywords'           => $request->seokeywords,
+        ];
+
+        $this->savePageSettings($data);
+        return redirect()->back()->with([
+            'status' => "Page details updated"
+        ]);
+    }
+
+    public function termsPage()
+    {
+        $data = Pages::with(['seo'])->where('page_name','terms')->first();
+      
+        return view('admin.pages.terms',compact('data'));
+    }
+
+    public function storeTermsPage(Request $request)
+    {
+        $request->validate([
+                        'title' => 'required',
+                        'sub_title' => 'required',
+                        'description' => 'required'
+                    ],[
+                        '*.required' => 'This field is required.',
+                    ]);
+        $data = [
+                'page_title'            => 'Terms & Conditions',
+                'page_name'             => 'terms',
+                'title'                 => $request->title,
+                'sub_title'             => $request->sub_title,
+                'description'           => $request->description,
+                'seotitle'              => $request->seotitle,
+                'ogtitle'               => $request->ogtitle,
+                'twtitle'               => $request->twtitle,
+                'seodescription'        => $request->seodescription, 
+                'og_description'        => $request->og_description,
+                'twitter_description'   => $request->twitter_description,
+                'seokeywords'           => $request->seokeywords,
+        ];
+
+        $this->savePageSettings($data);
+        return redirect()->back()->with([
+            'status' => "Page details updated"
+        ]);
+    }
+
+    public function downloadPage()
+    {
+        $data = Pages::with(['seo'])->where('page_name','download')->first();
+      
+        return view('admin.pages.downloads',compact('data'));
+    }
+
+    public function storeDownloadPage(Request $request)
+    {
+        $request->validate([
+                        'title' => 'required',
+                        'sub_title' => 'required',
+                        'heading1' => 'required'
+                    ],[
+                        '*.required' => 'This field is required.',
+                    ]);
+        $data = [
+                'page_title'            => 'Downloads',
+                'page_name'             => 'download',
+                'title'                 => $request->title,
+                'sub_title'             => $request->sub_title,
+                'heading1'              => $request->heading1,
+                'seotitle'              => $request->seotitle,
+                'ogtitle'               => $request->ogtitle,
+                'twtitle'               => $request->twtitle,
+                'seodescription'        => $request->seodescription, 
+                'og_description'        => $request->og_description,
+                'twitter_description'   => $request->twitter_description,
+                'seokeywords'           => $request->seokeywords,
+        ];
+
+        $this->savePageSettings($data);
+        return redirect()->back()->with([
+            'status' => "Page details updated"
+        ]);
+    }
 }

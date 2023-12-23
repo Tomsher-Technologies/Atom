@@ -4,11 +4,11 @@
         <div class="container">
             <div class="page-header__content">
                 <div class="row">
-                    <div class="col-auto">
-                        <div data-anim="slide-up delay-1">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div >
                             <h1 class="page-header__title">{!! $page->title !!}</h1>
                         </div>
-                        <div data-anim="slide-up delay-2">
+                        <div >
                             <p class="page-header__text">
                                 {!! $page->sub_title !!}
                             </p>
@@ -31,9 +31,7 @@
                             <div class="d-flex justify-center items-center size-60 rounded-full bg-light-7">
                                 <img src="{{ asset('assets/img/icons/location1.svg') }}" alt="icon">
                             </div>
-                            <div class="ml-20">
-                                {!! get_setting('address') !!}
-                            </div>
+                            <div class="ml-20" style="white-space: pre-wrap;">{!! trim(get_setting('address')) !!}</div>
                         </div>
                         <div class="d-flex items-center">
                             <div class="d-flex justify-center items-center size-60 rounded-full bg-light-7">
@@ -79,7 +77,7 @@
                             </div>
 
                             <div class="col-12">
-                                <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Subject</label>
+                                <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Subject*</label>
                                 <input type="text" placeholder="Enter subject" name='subject' id='subject' value="{{ old('subject') }}">
                                 <x-input-error name='subject' />
                             </div>
@@ -103,8 +101,17 @@
             </div>
         </div>
     </section>
-    <section class="layout-pt-lg layout-pb-lg bg-light-4">
-        <div class="container">
+
+    <section class="layout-pt-md layout-pb-lg">
+        <div data-anim-wrap class="container">
+            <div class="row y-gap-50 justify-between">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14442.61344961403!2d55.270009!3d25.1811798!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f690193b50a17%3A0xb87248c2102ddca5!2sATOM%20AVIATION%20TRAINING%20ACADEMY!5e0!3m2!1sen!2sae!4v1702029642358!5m2!1sen!2sae" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="layout-pt-lg layout-pb-lg bg-light-4" id="faqDiv">
+        <div class="container" >
             <div class="row justify-center text-center">
                 <div class="col-xl-8 col-lg-9 col-md-11">
                     <div class="sectionTitle ">
