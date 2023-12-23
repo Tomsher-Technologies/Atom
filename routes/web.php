@@ -35,6 +35,9 @@ Route::get('/trainings', [FrontendController::class, 'trainings'])->name('traini
 Route::get('/trainings/{slug}', [FrontendController::class, 'trainingCourses'])->name('courses');
 Route::get('/course/{slug}', [FrontendController::class, 'courseDetails'])->name('course-details');
 
+//DS
+Route::get('/training-categories/{slug}', [FrontendController::class, 'trainingCategories'])->name('training-categories');
+
 Route::get('/course-apply/{slug}', [FrontendController::class, 'courseApply'])->name('course-apply');
 Route::post('/apply-course', [FrontendController::class, 'storeCourseApply'])->name('apply-course');
 

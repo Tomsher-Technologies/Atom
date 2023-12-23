@@ -239,6 +239,14 @@ class FrontendController extends Controller
         return view('frontend.training_home',compact('page','categories'));
     }
   
+    public function trainingcategories(Request $request)
+    {   $slug = $request->slug;
+        $page = Pages::with(['seo'])->where('page_name','training-categories')->first();
+        $this->loadSEO($page);
+        $cat = TrainingCategories::where('status',1)->where('slug',$slug)->first();
+        $categories = TrainingCategories::where('status',1)->where('parent_id',$cat->id)->orderBy('sort_order','asc')->paginate(15);
+        return view('frontend.trainingcategories',compact('page','categories'));
+    }
     public function courseDetails(Request $request)
     {
         $slug = $request->slug;

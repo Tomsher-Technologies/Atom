@@ -93,10 +93,10 @@
                                                     @endphp
                                                     <ul class="mega__list">
                                                         @foreach ($header_courses  as $hc)
-                                                            <a href="{{ route('courses',['slug' => $hc['slug'] ]) }}">{{ $hc['name'] }}</a>
+                                                            <a href="{{ route('training-categories',['slug' => $hc['slug'] ]) }}">{{ $hc['name'] }}</a>
 
                                                             @php
-                                                                $mob_header_courses .= '<li><a data-barba href="'.route('courses',['slug' => $hc['slug'] ]) .'">'.$hc['name'].'</a></li>';
+                                                                $mob_header_courses .= '<li><a data-barba href="'.route('training-categories',['slug' => $hc['slug'] ]) .'">'.$hc['name'].'</a></li>';
                                                             @endphp
                                                         @endforeach
                                                     </ul>
