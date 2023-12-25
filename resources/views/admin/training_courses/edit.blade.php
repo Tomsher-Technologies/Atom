@@ -107,7 +107,11 @@
                                 <input type="number" name="price" id="price" class="form-control" value="{{ old('price',$course->price) }}">
                                 <x-input-error name='price' />
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Video Link</label>
+                                <input type="text" name="video_link" class="form-control" value="{{ old('video_link',$course->video_link) }}">
+                                <x-input-error name='video_link' />
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Language</label>
                                 <select name="language" class="form-control" >

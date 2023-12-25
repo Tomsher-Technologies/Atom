@@ -45,7 +45,25 @@
                                 <input class="form-control" type="number" name="call_back_phone" value="{{ old('call_back_phone', get_setting('call_back_phone') ?? '') }}">
                                 <x-input-error name='call_back_phone' />
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Quality Certificate <span class="text-info">(Please upload an image with size less than 1000 KB)</span></label>
+                                <input type="hidden" name="types[]" value="quality_certificate">
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <div class="input-group">
+                                            <input name="quality_certificate" id="img" type="file" class="custom-file-input"
+                                                id="inputGroupFile02" accept="image/*">
+                                            <label class="custom-file-label" id="imgname" for="inputGroupFile02">Choose
+                                                file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <x-input-error name='quality_certificate' />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Current Image</label>
+                                <img class="img-custom form-control" src="{{get_setting('quality_certificate')}}" alt="">
+                            </div>
                             <div class="form-group">
                                 <h4> Footer Section</h4>
                             </div>

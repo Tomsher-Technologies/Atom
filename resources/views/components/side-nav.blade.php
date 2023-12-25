@@ -80,7 +80,20 @@
                         </a>
                     </li>
                 @endcan
-               
+                @can('faq')
+                    <li class="{{ request()->routeIs('admin.teams*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.teams.index') }}">
+                            <i class="simple-icon-user"></i> Teams
+                        </a>
+                    </li>
+                @endcan
+                @can('blogs')
+                    <li class="{{ request()->routeIs('admin.careers*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.careers.index') }}">
+                            <i class="iconsminds-newspaper"></i>Careers
+                        </a>
+                    </li>
+                @endcan
                 @can('page_settings')
                     <li class="{{ request()->routeIs('admin.page*') ? 'active' : '' }}">
                         <a href="#pages">
