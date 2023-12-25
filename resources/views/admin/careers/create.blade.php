@@ -1,9 +1,9 @@
-@extends('layouts.admin.app', ['body_class' => 'nav-md', 'title' => 'Create Downloads'])
+@extends('layouts.admin.app', ['body_class' => 'nav-md', 'title' => 'Create Careers'])
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h1>Create Downloads</h1>
+                <h1>Create Careers</h1>
                 <div class="separator mb-5"></div>
             </div>
         </div>
@@ -14,41 +14,28 @@
 
                 <div class="card mb-4">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.downloads.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.careers.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Title</label>
                                 <input type="text" name="title" class="form-control" value="{{ old('title') }}">
                                 <x-input-error name='title' />
                             </div>
-
-                            {{-- <div class="form-group">
-                                <label for="exampleInputEmail1">Image <span class="text-info">(Please upload an image with size less than 200 KB and dimensions 150x45 pixels)</span></label>
-                                <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                        <input name="image" id="img" type="file" class="custom-file-input"
-                                            id="inputGroupFile02" accept="image/*">
-                                        <label class="custom-file-label" id="imgname" for="inputGroupFile02">Choose
-                                            file</label>
-                                    </div>
-                                </div>
-                                <x-input-error name='image' />
-                            </div> --}}
-
                             <div class="form-group">
-                                <label for="exampleInputEmail1">PDF File</label>
-                                <input type="file" name="pdf_file" class="form-control" accept=".pdf,.doc,.docx,.ppt,.png,.jpg,.jpeg,.xlsx,.csv"
-                                    value="{{ old('pdf_file') }}">
-                                <x-input-error name='pdf_file' />
+                                <label for="exampleInputEmail1">Position</label>
+                                <input type="text" name="position" class="form-control" value="{{ old('position') }}">
+                                <x-input-error name='position' />
                             </div>
-
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Sort Order</label>
-                                <input type="number" name="sort_order" class="form-control"
-                                    value="{{ old('sort_order') }}">
-                                <x-input-error name='sort_order' />
+                                <label for="exampleInputEmail1">Description</label>
+                                <input type="text" name="description" class="form-control" value="{{ old('description') }}">
+                                <x-input-error name='description' />
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Last Date</label>
+                                <input type="text" name="last_date" class="form-control" value="{{ old('last_date') }}">
+                                <x-input-error name='last_date' />
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Status</label>
                                 <select name="status" class="form-control select2-single mb-3">
@@ -63,7 +50,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary mb-0">Submit</button>
-                            <a href="{{ route('admin.downloads.index') }}" class="btn btn-info mb-0"> Cancel</a>
+                            <a href="{{ route('admin.careers.index') }}" class="btn btn-info mb-0"> Cancel</a>
                         </form>
                     </div>
                 </div>

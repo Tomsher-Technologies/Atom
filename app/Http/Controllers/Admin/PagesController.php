@@ -454,12 +454,24 @@ class PagesController extends Controller
     {
         $data = $request->all();
         foreach ($request->types as $key => $type) {
+
+            if($type == 'quality_certificate'){
+                if ($request->hasFile('quality_certificate')) {
+                    $image = uploadImage($request, 'quality_certificate', 'settings');
+                    $value = $image;
+                }else{
+                    $value = get_setting_value('quality_certificate');
+                }
+            }else{
+                $value = $request[$type];
+            }
+
             SiteSettings::updateOrCreate([
                 'type' => $type
             ], [
-                'value' =>  $request[$type]
+                'value' =>  $value
             ]);
-        }
+        }        
 
         Artisan::call('cache:clear');
         return redirect()->back()->with(['status' => "Details updated"]);

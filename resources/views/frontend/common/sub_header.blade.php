@@ -15,6 +15,11 @@
                     <div class="mobile-bg js-mobile-bg"></div>
                     <div class="menu js-navList">
                         <ul class="menu__nav text-black -is-active">
+                            <li>
+                                <a data-barba href="{{ route('home') }}">
+                                    <img width="150" src="{{ asset('assets/img/home.png') }}" alt="home" width="50px"> 
+                                </a>
+                            </li>
                             <li> 
                                 @if(Route::currentRouteName() == 'services' || Route::currentRouteName() == 'service-details')
                                     <a data-barba href="{{ route('consultancy-services') }}">Home</a>
@@ -47,7 +52,8 @@
                                                         <li><a data-barba href="{{ route('who-we-are') }}">Who We Are</a></li>
                                                         <li><a data-barba href="{{ route('mission-vision') }}">Mission & Vision</a></li>
                                                         <li><a data-barba href="{{ route('clients') }}">Partners & Clients</a></li>
-                                                        <li><a data-barba href="{{ route('career') }}">Career</a></li>
+                                                        <li><a data-barba href="{{ route('careerlisting') }}">Career</a></li>
+                                                        <li><a data-barba href="{{ route('teams') }}">Management</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -68,7 +74,7 @@
                                     <li><a data-barba href="{{ route('who-we-are') }}">Who We Are</a></li>
                                     <li><a data-barba href="{{ route('mission-vision') }}">Mission & Vision</a></li>
                                     <li><a data-barba href="{{ route('clients') }}">Partners & Clients</a></li>
-                                    <li><a data-barba href="{{ route('career') }}">Career</a></li>
+                                    <li><a data-barba href="{{ route('careerlisting') }}">Career</a></li>
                                 </ul>
                             </li>
                             <li class="menu-item-has-children -has-mega-menu">
@@ -93,10 +99,10 @@
                                                     @endphp
                                                     <ul class="mega__list">
                                                         @foreach ($header_courses  as $hc)
-                                                            <a href="{{ route('courses',['slug' => $hc['slug'] ]) }}">{{ $hc['name'] }}</a>
+                                                            <a href="{{ route('training-categories',['slug' => $hc['slug'] ]) }}">{{ $hc['name'] }}</a>
 
                                                             @php
-                                                                $mob_header_courses .= '<li><a data-barba href="'.route('courses',['slug' => $hc['slug'] ]) .'">'.$hc['name'].'</a></li>';
+                                                                $mob_header_courses .= '<li><a data-barba href="'.route('training-categories',['slug' => $hc['slug'] ]) .'">'.$hc['name'].'</a></li>';
                                                             @endphp
                                                         @endforeach
                                                     </ul>

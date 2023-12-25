@@ -9,10 +9,12 @@ use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\ReelsController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ClientsController;
+use App\Http\Controllers\Admin\TeamsController;
 use App\Http\Controllers\Admin\TrainingController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\WebinarController;
 use App\Http\Controllers\Admin\ReviewsController;
+use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\HomeSliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,7 +54,8 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
         // Clients
         Route::resource('clients', ClientsController::class)->except('show');
-
+// Teams
+        Route::resource('teams', TeamsController::class)->except('show');
         // Services
         Route::resource('services', ServiceController::class)->except('show');
 
@@ -87,7 +90,7 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
         });
 
         Route::resource('blogs', BlogController::class)->except('show');
-
+        Route::resource('careers', CareerController::class)->except('show');
         Route::resource('webinars', WebinarController::class)->except('show');
         Route::get('/webinar-bookings/{id}', [WebinarController::class, 'bookings'])->name('webinar-bookings');
 

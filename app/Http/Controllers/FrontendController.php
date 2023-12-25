@@ -7,11 +7,14 @@ use App\Models\Division;
 use App\Models\Product\Product;
 use App\Models\Product\ProductCategory;
 use App\Models\Pages;
+use App\Models\Career;
 use App\Models\PageTranslations;
 use App\Models\PageSeos;
 use App\Models\Services;
 use App\Models\Contact;
+use App\Models\SiteSettings;
 use App\Models\Clients;
+use App\Models\Teams;
 use App\Models\CareerApplications;
 use App\Models\TrainingCategories;
 use App\Models\TrainingCourses;
@@ -33,6 +36,7 @@ use Artesaos\SEOTools\Facades\JsonLdMulti;
 use Artesaos\SEOTools\Facades\SEOTools;
 use App\Mail\ContactEnquiry;
 use App\Mail\CareerEnquiry;
+use App\Models\GeneralSettings;
 use Illuminate\Support\Facades\URL;
 use Storage;
 use Validator;
@@ -119,11 +123,27 @@ class FrontendController extends Controller
         return view('frontend.clients',compact('page','clients'));
     }
 
+    public function teams()
+    {
+        $page = Pages::with(['seo'])->where('page_name','teams')->first();
+        $this->loadSEO($page);
+        $teams =  Teams::where('status',1)->orderBy('sort_order','asc')->get();
+        return view('frontend.teams',compact('page','teams'));
+    }
+
     public function whoWeAre()
     {
         $page = Pages::with(['seo'])->where('page_name','about')->first();
         $this->loadSEO($page);
         return view('frontend.who_we_are',compact('page'));
+    }
+
+    public function careerlisting()
+    {
+        $page = Pages::with(['seo'])->where('page_name','career')->first();
+        $this->loadSEO($page);
+        $careers = Career::where('status',1)->orderBy('id','desc')->paginate(15);
+        return view('frontend.careerlisting',compact('page','careers'));
     }
 
     public function career()
@@ -132,7 +152,6 @@ class FrontendController extends Controller
         $this->loadSEO($page);
         return view('frontend.career',compact('page'));
     }
-
     public function storeCareer(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -176,6 +195,14 @@ class FrontendController extends Controller
         $page = Pages::with(['seo'])->where('page_name','contact')->first();
         $this->loadSEO($page);
         return view('frontend.contact',compact('page'));
+    }
+
+    public function certificate()
+    {
+        $page = Pages::with(['seo'])->where('page_name','certificate')->first();
+        $this->loadSEO($page);
+        $certificate = SiteSettings::where('type','quality_certificate')->get();
+        return view('frontend.certificate',compact('page','certificate'));
     }
 
     public function storeContact(Request $request){
@@ -239,6 +266,14 @@ class FrontendController extends Controller
         return view('frontend.training_home',compact('page','categories'));
     }
   
+    public function trainingcategories(Request $request)
+    {   $slug = $request->slug;
+        $page = Pages::with(['seo'])->where('page_name','training-categories')->first();
+        $this->loadSEO($page);
+        $cat = TrainingCategories::where('status',1)->where('slug',$slug)->first();
+        $categories = TrainingCategories::where('status',1)->where('parent_id',$cat->id)->orderBy('sort_order','asc')->paginate(15);
+        return view('frontend.trainingcategories',compact('page','categories'));
+    }
     public function courseDetails(Request $request)
     {
         $slug = $request->slug;
@@ -432,6 +467,8 @@ class FrontendController extends Controller
                 'name' => $user['name'],
                 'email' => $user['email'],
                 'phone' => $user['phone'],
+                'job_title' => $user['job_title'],
+                'company_name' => $user['company_name'],
                 'course_id' => $course_id,
                 'parent_id' => ($key == 0) ? 0 : $parent_id,
                 'price' => $request->price,

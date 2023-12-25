@@ -257,6 +257,22 @@
 
                                                         </div>
 
+                                                        <div class="col-lg-4">
+                                                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Job Title</label>
+                                                        </div>
+                                                        <div class="col-md-8  col-sm-8">
+                                                            <input type="text" placeholder="Enter your Job Title"
+                                                                name='job_title' id='job_title'
+                                                                value="{{ old('job_title') }}">
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Company Name</label>
+                                                        </div>
+                                                        <div class="col-md-8  col-sm-8">
+                                                            <input type="text" placeholder="Enter your Company Name"
+                                                                name='company_name' id='company_name'
+                                                                value="{{ old('company_name') }}">
+                                                        </div>
                                                         <div class="text-right col-sm-12 mb-10 d-block">
                                                             <input data-repeater-delete
                                                                 class="button -sm -red-1 text-white mt-2" type="button"
@@ -270,7 +286,20 @@
                                                     <input data-repeater-create class="button -sm -purple-1 text-white"
                                                         type="button" value="Add New" id="addNew" />
                                                 </div>
-
+                                                <div class="row y-gap-20">
+                                            <div class="col-lg-6 col-12">
+                                                <input type="text" name="txtcode" required id="txtcode" onBlur="valcap();" style="width:100%;" class="" placeholder="Enter Code *" autocomplete="off">
+                                                <span id="caperr"></span>
+                                            </div>
+                                            <div class="col-lg-6 col-12">
+                                                <div id="captcha" style=" width:30%; float: left;    text-align: center;  margin:-4px 21px 0px 49px; color:#000;">
+                                                <div id="captcha_gen" style="background-image:url({{ asset('assets/img/icons/captcha.png') }});">
+                                                <label align="center" id="randomfield" onCopy="return false;"   style='-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none; font-size:20px; font-weight:bold; padding-top:4px;'  unselectable='on' onselectstart='return false;' onmousedown='return false;'></label>
+                                                </div>
+                                                <input type="hidden" id="txtCaptcha" name="txtCaptcha"/></div>
+                                                <img src="{{ asset('assets/img/icons/rlod.png') }}" width="22" height="22" onClick="getCaptcha();">
+                                            </div>
+                                            </div>
                                                 <div class="row y-gap-20 justify-between pt-15">
                                                     <div class="col-12">
                                                         <div class="col-12">
@@ -419,5 +448,35 @@
                 form.submit();
             }
         });
+        $( document ).ready(function() {
+    getCaptcha();
+});
+    function getCaptcha() { 
+    //var chars = "0Aa1Bb2Cc3Dd4Ee5Ff6Gg7Hh8Ii9Jj0Kk1Ll2Mm3Nn4Oo5Pp6Qq7Rr8Ss9Tt0Uu1Vv2Ww3Xx4Yy5Zz";
+    var chars = "0123456789";
+    var string_length = 4;
+    var captchastring = '';
+    for (var i=0; i<string_length; i++) {
+        var rnum = Math.floor(Math.random() * chars.length);
+        captchastring += chars.substring(rnum,rnum+1);
+    }
+    document.getElementById("randomfield").innerHTML = captchastring;
+    document.getElementById("txtCaptcha").value =  document.getElementById("randomfield").innerHTML ;
+}
+
+function valcap(){
+    $("#caperr").html("");
+    $txtcod=$("#txtcode").val();
+    $txtcap=$("#txtCaptcha").val(); 
+    if($txtcod != $txtcap){
+    document.getElementById("txtcode").value = '';
+      $("#caperr").html("Invalid Captcha");
+      $( "#caperr" ).focus();
+      $("#caperr").css("color", "red");
+        return false;  
+    }else{
+        $("#caperr").html("");
+    }
+}
     </script>
 @endpush
