@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\ReelsController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ClientsController;
+use App\Http\Controllers\Admin\PopupsController;
+use App\Http\Controllers\Admin\AccreditationsController;
 use App\Http\Controllers\Admin\TeamsController;
 use App\Http\Controllers\Admin\TrainingController;
 use App\Http\Controllers\Admin\BlogController;
@@ -54,6 +56,9 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
         // Clients
         Route::resource('clients', ClientsController::class)->except('show');
+        Route::resource('popups', PopupsController::class)->except('show');
+        // Accreditations
+        Route::resource('accreditations', AccreditationsController::class)->except('show');
 // Teams
         Route::resource('teams', TeamsController::class)->except('show');
         // Services
@@ -136,6 +141,9 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
             Route::get('/clients', [PagesController::class, 'clientsPage'])->name('clients');
             Route::post('/store-clients', [PagesController::class, 'storeClientsPage'])->name('store-clients');
+
+            Route::get('/accreditations', [PagesController::class, 'accreditationsPage'])->name('accreditations');
+            Route::post('/store-accreditations', [PagesController::class, 'storeAccreditationsPage'])->name('store-accreditations');
            
             Route::get('/contact', [PagesController::class, 'contactPage'])->name('contact');
             Route::post('/store-contact', [PagesController::class, 'storeContactPage'])->name('store-contact');

@@ -8,6 +8,7 @@ use App\Models\Product\Product;
 use App\Models\Product\ProductCategory;
 use App\Models\Pages;
 use App\Models\Career;
+use App\Models\Popups;
 use App\Models\PageTranslations;
 use App\Models\PageSeos;
 use App\Models\Services;
@@ -15,6 +16,7 @@ use App\Models\Contact;
 use App\Models\SiteSettings;
 use App\Models\Clients;
 use App\Models\Teams;
+use App\Models\Accreditations;
 use App\Models\CareerApplications;
 use App\Models\TrainingCategories;
 use App\Models\TrainingCourses;
@@ -102,9 +104,15 @@ class FrontendController extends Controller
     }
     public function home()
     {
+        $pmodal ="";
         $page = Pages::with(['seo'])->where('page_name','main_home')->first();
         $this->loadSEO($page);
-        return view('frontend.index',compact('page'));
+        $modalcount = Popups::where('status',1)->count();
+        if($modalcount > 0){
+            $pmodal = Popups::where('status',1)->first();
+        }
+        $accr =  Accreditations::where('status',1)->orderBy('sort_order','asc')->get();
+        return view('frontend.index',compact('page','pmodal','accr'));
     }
 
 

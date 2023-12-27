@@ -72,7 +72,20 @@
                         </a>
                     </li>
                 @endcan
-
+                @can('accreditations')
+                    <li class="{{ request()->routeIs('admin.accreditations*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.accreditations.index') }}">
+                            <i class="simple-icon-people"></i> Accreditations
+                        </a>
+                    </li>
+                @endcan
+                @can('popups')
+                    <li class="{{ request()->routeIs('admin.popup*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.popups.index') }}">
+                            <i class="simple-icon-people"></i> Popup
+                        </a>
+                    </li>
+                @endcan
                 @can('faq')
                     <li class="{{ request()->routeIs('admin.faq*') ? 'active' : '' }}">
                         <a href="{{ route('admin.faq.index') }}">
@@ -80,7 +93,7 @@
                         </a>
                     </li>
                 @endcan
-                @can('faq')
+                @can('teams')
                     <li class="{{ request()->routeIs('admin.teams*') ? 'active' : '' }}">
                         <a href="{{ route('admin.teams.index') }}">
                             <i class="simple-icon-user"></i> Teams

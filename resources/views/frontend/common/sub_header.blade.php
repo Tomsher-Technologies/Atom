@@ -16,8 +16,8 @@
                     <div class="menu js-navList">
                         <ul class="menu__nav text-black -is-active">
                             <li>
-                                <a data-barba href="{{ route('home') }}">
-                                    <img width="150" src="{{ asset('assets/img/home.png') }}" alt="home" width="50px"> 
+                                <a data-barba href="{{ route('home') }}" class="h-100 header-home-icon">
+                                <i class="fa fa-home"></i>
                                 </a>
                             </li>
                             <li> 
