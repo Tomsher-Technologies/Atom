@@ -12,7 +12,7 @@ use App\Models\TrainingCategories;
                 <div class="col-xl-6 col-lg-11">
                     <div class="masthead__content">
                         <div data-anim-child="slide-up delay-2" class="masthead__subtitle fw-500 text-white text-20 lh-15">
-                            {{ $page->title ?? '' }}
+                            {{ $page->title ?? '' }} - {{ $cat->name }}
                         </div>
                         <h1 data-anim-child="slide-up delay-3" class="masthead__title text-white mt-10">
                             {!! $page->sub_title ?? '' !!}
