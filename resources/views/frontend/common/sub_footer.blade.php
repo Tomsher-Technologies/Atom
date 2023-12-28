@@ -87,12 +87,11 @@
                 <div class="col-xl-2 offset-xl-1 col-lg-4 col-md-6">
                     <div class="text-17 fw-500 text-black uppercase mb-25">{{ get_setting('footer_link3_title') ?? '' }}</div>
                     <div class="ft-text-dark-all d-flex y-gap-10 flex-column">
-                        <a href="{{ route('careerlisting') }}">Career</a>
+                        <a href="{{ route('career') }}">Career</a>
                         <a href="{{ route('contact') }}#faqDiv">FAQS</a>
                         <a href="{{ route('privacy') }}">Privacy Policy</a>
                         <a href="{{ route('terms') }}">Terms of Use</a>
                         <a href="{{ route('contact') }}">Contact Us</a>
-                        <a href="{{ route('certificate') }}">Quality Certificate</a>
                     </div>
                 </div>
 
@@ -101,6 +100,7 @@
         </div>
 
     </div>
+    
 </footer>
 
 <div class="bg-blue-1">
@@ -126,7 +126,3 @@
         </div>
     </div>
 </div>
-
-<a href="https://wa.me/+971528407486" class="float" target="_blank">
-      <i class="fa fa-whatsapp my-float"></i>
-    </a>

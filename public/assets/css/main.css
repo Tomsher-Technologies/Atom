@@ -16403,3 +16403,12 @@ a.open-modal:active {
   border-radius: 7px;
 }
 /* end :: custom modal style  */
+
+.masked {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.maked-area3 {
+  background-image: url(../img/bg.png);
+ }

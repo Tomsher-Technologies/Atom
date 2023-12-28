@@ -194,9 +194,9 @@
             </div>
 
             <div class="col-md-8">
-                <div class="row d-flex">
+                <div class="row">
                     <div class="col-md-12">
-                        <section class="section-bg pt-30 pb-30 lg:pt-10 lg:pb-10 mb-10 h-100 p-cat--home">
+                        <section class="section-bg pt-30 pb-30 lg:pt-10 lg:pb-10 p-cat--home">
                             <div class="section-bg__item bg-dark-1"
                                 style="background-image: url({{ $page->getImage1() }});  background-position: right; background-repeat: no-repeat; background-size: cover;">
                             </div>
@@ -224,7 +224,7 @@
                     </div>
 
                     <div class="col-md-12">
-                        <section class="section-bg pt-30 pb-30 lg:pt-10 lg:pb-10 mb-10 h-100  p-cat--home2">
+                        <section class="section-bg pt-30 pb-30 lg:pt-10 lg:pb-10  p-cat--home2">
                             <div class="section-bg__item bg-light-7"
                                 style="background-image: url({{  $page->getImage2()  }}); background-position: right; background-repeat: no-repeat; background-size: cover;">
                             </div>
@@ -253,22 +253,6 @@
             </div>
         </div>
     </section>
-
-
-    <!-- start :: client slider -->
-    
-    
-    <div class="client-slider">
-        <div class="client-slide-track">
-        @foreach ($accr as $accrs)
-          <div class="client-slide">
-            <img src="{{ asset('assets/$accrs->image') }}" height="100" width="250" alt="" />
-          </div> 
-          @endforeach         
-        </div>
-      </div>
-      
-      <!-- end :: client slider -->
 @endsection
 
 
@@ -289,14 +273,43 @@
             }
         });
     </script>
-@if($pmodal != NULL)
-<div id="modal">
-        <div class="modal-content">
-          <a href="#">
-            <img src="{{ asset('assets/$pmodal->image') }}" alt="">
-          </a>
-          <a href="{{ $pmodal->link }}" title="Close Modal" class="close modal-close"><i class="fa fa-close"></i></a>
-        </div>
-      </div>
-@endif
+    
+    <style>
+
+
+.typeahead {
+        display: none;
+  position: relative;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: left !important;
+    margin-top: -2px;
+    z-index: 5000 !important;
+    transition-delay: 0.75s;
+    transition: display 1s;
+    /* position: relative; */
+    top: 0px !important;
+    /* background: #fff; */
+    /* position: relative; */
+    /* text-align: left !important; */
+    /* padding: 20px;*/
+}
+.typeahead li .dropdown-item{
+    position: relative;
+    display: block;
+    /* z-index: 5000 !important; */
+    padding: 15px 20px;
+    margin-bottom: 2px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    background-color: rgb(255 255 255);
+    border-radius: 100px;
+    /* padding: 22px 35px; */
+    -webkit-backdrop-filter: blur(4px);
+    /* backdrop-filter: blur(2px); */
+    /* color: #fff !important; */
+    box-shadow: 0 5px 50px rgb(0 0 0 / 28%);
+}
+    </style>
 @endpush
