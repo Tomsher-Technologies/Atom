@@ -363,13 +363,6 @@
   function mainSlider1() {
     new Swiper('.js-mainSlider', {
       speed: 800,
-      // slidesPerView: 1,  
-      //   loop: true,
-      autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-      autoplayDisableOnInteraction: false,
       parallax: true,
       lazy: {
         loadPrevNext: true,
