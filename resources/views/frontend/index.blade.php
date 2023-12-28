@@ -324,7 +324,7 @@
     position: relative;
     display: block;
     /* z-index: 5000 !important; */
-    padding: 15px 20px;
+    padding: 15px 20px; 
     margin-bottom: 2px;
     background-color: #fff;
     border: 1px solid #ddd;
