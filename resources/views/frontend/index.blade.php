@@ -261,7 +261,7 @@
         <div class="client-slide-track">
         @foreach ($accr as $accrs)
           <div class="client-slide">
-            <img src="{{ asset('assets/$accrs->image') }}" height="100" width="250" alt="" />
+            <img src="{{ $accrs->image }}" height="100" width="250" alt="" />
           </div> 
           @endforeach         
         </div>
@@ -292,8 +292,8 @@
 @if($pmodal != NULL)
 <div id="modal">
         <div class="modal-content">
-          <a href="#">
-            <img src="{{ asset('assets/$pmodal->image') }}" alt="">
+          <a href="{{ $pmodal->link }}">
+            <img src="{{ $pmodal->image }}" alt="">
           </a>
           <a href="{{ $pmodal->link }}" title="Close Modal" class="close modal-close"><i class="fa fa-close"></i></a>
         </div>
