@@ -16412,3 +16412,17 @@ a.open-modal:active {
 .maked-area3 {
   background-image: url(../img/bg.png);
  } 
+
+ .slide-up {
+  background: #008bce;
+      border-radius: 20px;
+  }
+.slide-up .teaming {
+    border-radius: 10px;
+        background: white;
+        padding: 0 !important;
+    }
+
+.slide-up .teaming img {
+      border-radius:10px;
+      }
