@@ -290,7 +290,7 @@
     </script>
     
 
-<div id="divmodal">
+<div id="modal">
         <div class="modal-content">
           <a href="{{ $pmodal->link }}">
             <img src="{{ $pmodal->image }}" alt="">
@@ -304,7 +304,7 @@
 <script src="{{ adminAsset('js/vendor/jquery-3.3.1.min.js') }}"></script>
 <script>
 function showModal() {
-            var modal = document.getElementById('divmodal');
+            var modal = document.getElementById('modal');
             modal.style.display = 'block';
         }
 
