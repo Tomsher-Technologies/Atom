@@ -289,7 +289,7 @@
         });
     </script>
     
-
+    @if($pmodal != NULL)
 <div id="modal">
         <div class="modal-content">
           <a href="{{ $pmodal->link }}">
@@ -298,7 +298,7 @@
           <a href="{{ $pmodal->link }}" title="Close Modal" class="close modal-close"><i class="fa fa-close"></i></a>
         </div>
       </div>
-     
+      @endif
       @push('footer')
       @if($pmodal != NULL)
 <script src="{{ adminAsset('js/vendor/jquery-3.3.1.min.js') }}"></script>
