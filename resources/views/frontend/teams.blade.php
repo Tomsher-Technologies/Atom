@@ -41,7 +41,7 @@
                 @if($teams)
                     @foreach ($teams as $cl)
                         <div data-anim-child="slide-up delay-1" class="col-lg-3 col-md-3 col-sm-3 col-3">
-                            <div class="d-flex justify-center items-center px-4">
+                            <div class="d-flex teamimg justify-center items-center px-4">
                                 <img class="w-1/1" src="{{ $cl->getImage() }}" alt="teams image">
                             </div>
                             <div class="col text-center">
