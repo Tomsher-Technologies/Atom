@@ -19,7 +19,7 @@ Route::get('/autocomplete-search', [FrontendController::class, 'autocompleteSear
 Route::get('/autocomplete-course', [FrontendController::class, 'ajaxCourses'])->name('autocomplete-course');
 
 Route::get('/clients', [FrontendController::class, 'clients'])->name('clients');
-Route::get('/accreditations', [AccreditationsController::class, 'accreditations'])->name('accreditations');
+Route::get('/accreditations', [FrontendController::class, 'accreditations'])->name('accreditations');
 Route::get('/teams', [FrontendController::class, 'teams'])->name('teams');
 Route::get('/mission-vision', [FrontendController::class, 'missionVision'])->name('mission-vision');
 Route::get('/who-we-are', [FrontendController::class, 'whoWeAre'])->name('who-we-are');
