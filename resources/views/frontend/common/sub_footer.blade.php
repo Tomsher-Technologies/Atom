@@ -126,3 +126,7 @@
         </div>
     </div>
 </div>
+
+<a href="https://wa.me/+971528407486" class="float" target="_blank">
+      <i class="fa fa-whatsapp my-float"></i>
+    </a>
