@@ -40,7 +40,7 @@
             <div class="row y-gap-30 justify-between sm:justify-start items-center pt-60 md:pt-50">
                        <div data-anim-child="slide-up delay-1" class="col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="d-flex justify-center items-center px-4">
-                                <img class="w-1/1" src="{{get_setting('quality_certificate')}}" alt="Quality Certificate image">
+                                <img class="w-1/1" width="1000px" src="{{get_setting('quality_certificate')}}" alt="Quality Certificate image">
                             </div>
                         </div>
             </div>

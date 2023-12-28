@@ -92,6 +92,8 @@
                         <a href="{{ route('privacy') }}">Privacy Policy</a>
                         <a href="{{ route('terms') }}">Terms of Use</a>
                         <a href="{{ route('contact') }}">Contact Us</a>
+                        <a href="{{ route('certificate') }}">Quality Policy</a>
+                        <a href="{{ route('accreditations') }}">Accreditations</a>
                     </div>
                 </div>
 
