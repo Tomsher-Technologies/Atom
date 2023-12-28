@@ -136,7 +136,7 @@ class FrontendController extends Controller
         $page = Pages::with(['seo'])->where('page_name','accreditations')->first();
         $this->loadSEO($page);
         $accr =  Accreditations::where('status',1)->orderBy('sort_order','asc')->get();
-        return view('frontend.accreditations',compact('page','accr'));
+        return view('frontend.accreditations',compact('page','accreditations'));
     }
     
     public function teams()
