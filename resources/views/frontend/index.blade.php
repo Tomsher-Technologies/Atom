@@ -289,8 +289,8 @@
         });
     </script>
     
-@if($pmodal != NULL)
-<div id="modal">
+
+<div id="divmodal">
         <div class="modal-content">
           <a href="{{ $pmodal->link }}">
             <img src="{{ $pmodal->image }}" alt="">
@@ -298,6 +298,21 @@
           <a href="{{ $pmodal->link }}" title="Close Modal" class="close modal-close"><i class="fa fa-close"></i></a>
         </div>
       </div>
+     
+      @push('footer')
+      @if($pmodal != NULL)
+<script src="{{ adminAsset('js/vendor/jquery-3.3.1.min.js') }}"></script>
+<script>
+function showModal() {
+            var modal = document.getElementById('divmodal');
+            modal.style.display = 'block';
+        }
+
+        // Event listener for the onload event of the page
+        window.onload = function() {
+            showModal();
+        };
+        </script>
 @endif
     <style>
 
