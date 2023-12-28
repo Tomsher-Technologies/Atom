@@ -171,6 +171,8 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
             Route::get('/download', [PagesController::class, 'downloadPage'])->name('download');
             Route::post('/store-download', [PagesController::class, 'storeDownloadPage'])->name('store-download');
+
+            Route::get('/certificate', [PagesController::class, 'certificatePage'])->name('certificate');
         });
 
         Route::resource('roles', RoleController::class);

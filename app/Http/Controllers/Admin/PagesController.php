@@ -504,13 +504,18 @@ class PagesController extends Controller
         return redirect()->back()->with(['status' => "Details updated"]);
     }
 
+    public function certificatePage()
+    {
+        $data = Pages::with(['seo'])->where('page_name','certificate')->first();
+      
+        return view('admin.pages.clients',compact('data'));
+    }
     public function clientsPage()
     {
         $data = Pages::with(['seo'])->where('page_name','clients')->first();
       
         return view('admin.pages.clients',compact('data'));
     }
-
     public function storeClientsPage(Request $request)
     {
         $request->validate([
@@ -1396,4 +1401,6 @@ class PagesController extends Controller
             'status' => "Page details updated"
         ]);
     }
+
+
 }

@@ -40,7 +40,7 @@
             <div class="row y-gap-30 justify-between sm:justify-start items-center pt-60 md:pt-50">
                 @if($teams)
                     @foreach ($teams as $cl)
-                        <div data-anim-child="slide-up delay-1" class="col-lg-4 col-md-4 col-sm-4 col-4">
+                        <div data-anim-child="slide-up delay-1" class="col-lg-3 col-md-3 col-sm-3 col-3">
                             <div class="d-flex justify-center items-center px-4">
                                 <img class="w-1/1" src="{{ $cl->getImage() }}" alt="teams image">
                             </div>

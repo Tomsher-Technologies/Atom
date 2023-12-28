@@ -319,6 +319,10 @@
                                                         <button type="submit"
                                                             class="button -md -outline-purple-1 text-purple-1">Register
                                                             Now</button>
+
+                                                            <button type="submit"
+                                                            class="button -md -outline-purple-1 text-purple-1">Register
+                                                            Now and Pay Later</button>
                                                     </div>
                                                 </div>
                                             </form>
