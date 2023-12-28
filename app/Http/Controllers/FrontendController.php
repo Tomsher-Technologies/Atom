@@ -280,7 +280,7 @@ class FrontendController extends Controller
         $this->loadSEO($page);
         $cat = TrainingCategories::where('status',1)->where('slug',$slug)->first();
         $categories = TrainingCategories::where('status',1)->where('parent_id',$cat->id)->orderBy('sort_order','asc')->paginate(15);
-        return view('frontend.trainingcategories',compact('page','categories'));
+        return view('frontend.trainingcategories',compact('page','categories','cat'));
     }
     public function courseDetails(Request $request)
     {

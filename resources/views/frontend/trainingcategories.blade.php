@@ -5,7 +5,7 @@ use App\Models\TrainingCategories;
 ?>
     <section data-anim-wrap class="masthead -type-2">
         <div class="masthead__bg">
-            <div class="bg-image js-lazy" data-bg="{{ $page->getImage1() }}"></div>
+            <div class="bg-image js-lazy" data-bg="{{ $cat->image }}"></div>
         </div>
         <div class="container">
             <div class="row y-gap-50 justify-center items-center">
