@@ -508,7 +508,7 @@ class PagesController extends Controller
     {
         $data = Pages::with(['seo'])->where('page_name','certificate')->first();
       
-        return view('admin.pages.clients',compact('data'));
+        return view('admin.pages.certificate',compact('data'));
     }
     public function clientsPage()
     {
