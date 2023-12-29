@@ -1850,4 +1850,11 @@
   
   
   })();
+
+  document.querySelectorAll('.open-positions-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      var item = this.parentNode;
+      item.classList.toggle('active');
+    });
+  });
   
