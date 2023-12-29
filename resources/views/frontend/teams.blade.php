@@ -104,5 +104,5 @@ if($i == 1){
 
 
 
-    @include('frontend.common.proud_blue')
+    
 @endsection
