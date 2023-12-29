@@ -508,8 +508,154 @@ class PagesController extends Controller
     {
         $data = Pages::with(['seo'])->where('page_name','certificate')->first();
       
-        return view('admin.pages.clients',compact('data'));
+        return view('admin.pages.certificate',compact('data'));
     }
+
+    public function storeCertificatePage(Request $request)
+    {
+        $request->validate([
+                        'title' => 'required',
+                        'sub_title' => 'required',
+                        'description' => 'required',
+                        'heading1' => 'required',
+                        'image' => 'nullable|max:200'
+                    ],[
+                        '*.required' => 'This field is required.',
+                        'image.max' => "Maximum file size to upload is 200 KB.",
+                    ]);
+        $data = [
+                'page_title'            => 'Certificate',
+                'page_name'             => 'certificate',
+                'title'                 => $request->title,
+                'sub_title'             => $request->sub_title,
+                'description'           => $request->description,
+                'heading1'              => $request->heading1,
+                'seotitle'              => $request->seotitle,
+                'ogtitle'               => $request->ogtitle,
+                'twtitle'               => $request->twtitle,
+                'seodescription'        => $request->seodescription, 
+                'og_description'        => $request->og_description,
+                'twitter_description'   => $request->twitter_description,
+                'seokeywords'           => $request->seokeywords,
+        ];
+
+        $pageData = Pages::where('page_name','certificate')->first();
+        if ($request->hasFile('image')) {
+            $image = uploadImage($request, 'image', 'pages/certificate');
+            deleteImage($pageData->image1);
+            $data['image1'] = $image;
+        }
+
+        $this->savePageSettings($data);
+        return redirect()->back()->with([
+            'status' => "Page details updated"
+        ]);
+    }
+
+
+
+
+
+    public function managementPage()
+    {
+        $data = Pages::with(['seo'])->where('page_name','management')->first();
+      
+        return view('admin.pages.management',compact('data'));
+    }
+
+    public function storeManagementPage(Request $request)
+    {
+        $request->validate([
+                        'title' => 'required',
+                        'sub_title' => 'required',
+                        'description' => 'required',
+                        'heading1' => 'required',
+                        'image' => 'nullable|max:200'
+                    ],[
+                        '*.required' => 'This field is required.',
+                        'image.max' => "Maximum file size to upload is 200 KB.",
+                    ]);
+        $data = [
+                'page_title'            => 'Certificate',
+                'page_name'             => 'certificate',
+                'title'                 => $request->title,
+                'sub_title'             => $request->sub_title,
+                'description'           => $request->description,
+                'heading1'              => $request->heading1,
+                'seotitle'              => $request->seotitle,
+                'ogtitle'               => $request->ogtitle,
+                'twtitle'               => $request->twtitle,
+                'seodescription'        => $request->seodescription, 
+                'og_description'        => $request->og_description,
+                'twitter_description'   => $request->twitter_description,
+                'seokeywords'           => $request->seokeywords,
+        ];
+
+        $pageData = Pages::where('page_name','management')->first();
+        if ($request->hasFile('image')) {
+            $image = uploadImage($request, 'image', 'pages/management');
+            deleteImage($pageData->image1);
+            $data['image1'] = $image;
+        }
+
+        $this->savePageSettings($data);
+        return redirect()->back()->with([
+            'status' => "Page details updated"
+        ]);
+    }
+
+
+
+    public function accreditationsPage()
+    {
+        $data = Pages::with(['seo'])->where('page_name','accreditations')->first();
+      
+        return view('admin.pages.accreditations',compact('data'));
+    }
+
+    public function storeAccreditationsPage(Request $request)
+    {
+        $request->validate([
+                        'title' => 'required',
+                        'sub_title' => 'required',
+                        'description' => 'required',
+                        'heading1' => 'required',
+                        'image' => 'nullable|max:200'
+                    ],[
+                        '*.required' => 'This field is required.',
+                        'image.max' => "Maximum file size to upload is 200 KB.",
+                    ]);
+        $data = [
+                'page_title'            => 'accreditations',
+                'page_name'             => 'accreditations',
+                'title'                 => $request->title,
+                'sub_title'             => $request->sub_title,
+                'description'           => $request->description,
+                'heading1'              => $request->heading1,
+                'seotitle'              => $request->seotitle,
+                'ogtitle'               => $request->ogtitle,
+                'twtitle'               => $request->twtitle,
+                'seodescription'        => $request->seodescription, 
+                'og_description'        => $request->og_description,
+                'twitter_description'   => $request->twitter_description,
+                'seokeywords'           => $request->seokeywords,
+        ];
+
+        $pageData = Pages::where('page_name','accreditations')->first();
+        if ($request->hasFile('image')) {
+            $image = uploadImage($request, 'image', 'pages/accreditations');
+            deleteImage($pageData->image1);
+            $data['image1'] = $image;
+        }
+
+        $this->savePageSettings($data);
+        return redirect()->back()->with([
+            'status' => "Page details updated"
+        ]);
+    }
+
+
+
     public function clientsPage()
     {
         $data = Pages::with(['seo'])->where('page_name','clients')->first();
