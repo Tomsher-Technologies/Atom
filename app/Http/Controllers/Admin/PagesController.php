@@ -626,7 +626,7 @@ class PagesController extends Controller
                         'image.max' => "Maximum file size to upload is 200 KB.",
                     ]);
         $data = [
-                'page_title'            => 'accreditations',
+                'page_title'            => 'Accreditations',
                 'page_name'             => 'accreditations',
                 'title'                 => $request->title,
                 'sub_title'             => $request->sub_title,
