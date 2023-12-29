@@ -60,7 +60,7 @@ if($i == 1){
                 <div class="carousel-item {{ $act }}">
                     <div class="carousel-item-wrapper">
                         <div class="carousel-img-area">
-                            <img src="img/C7.jpg" alt="">
+                            <img src="{{ $cl->getImage() }}" alt="">
                         </div>
                         <div class="carousel-content-area">
                             <div class="person-detail">
