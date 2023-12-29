@@ -16426,3 +16426,255 @@ a.open-modal:active {
 .slide-up .teaming img {
       border-radius:10px;
       }
+
+
+      /* start :: team slider style */
+
+.carousel-item-wrapper {
+  display: flex;
+  margin: 0 120px;
+  gap: 50px;
+  align-items: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 60px;
+  background: black;
+  height: 60px;
+  border-radius: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-img-area {
+  min-width: 300px;
+  max-width: 320px;
+}
+
+.carousel-img-area img {
+  border-radius: 1000px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.person-detail {
+  margin-bottom: 20px;
+}
+
+.person-detail span {
+  font-size: 17px;
+  opacity: 0.6; 
+}
+
+@media screen and (max-width:991px) {
+  .carousel-item-wrapper {
+    flex-direction: column;
+    margin: 0 70px;
+  }
+
+  .carousel-item-wrapper {
+    gap: 30px;
+  }
+  .carousel-img-area {
+    min-width: auto;
+  }
+
+  .carousel-img-area img {
+    width: 150px;
+    border-radius: 100px;
+    aspect-ratio: 1/1;
+    
+  }
+}
+
+@media screen and (max-width:768px) {
+  .carousel-img-area {
+    /* display: none; */
+  }
+  .carousel-content-area {
+    text-align: center;
+  }
+
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+  .carousel-content-area {
+    text-align: center;
+    
+  }
+  .person-detail {
+    margin-bottom: 10px;
+  }
+}
+
+
+/* end :: team slider style */
+
+/* start :: open positions style */
+/* Style for the accordion */
+.open-positions-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Style for accordion items */
+.open-positions-item {
+  margin-bottom: 5px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #E5EEFD;
+  transition: height 0.3s ease-in-out;
+}
+
+/* Style for accordion item header */
+.open-positions-header {
+  background-color: #E5EEFD;
+  padding: 20px;
+  padding-left: 30px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  transition: all 0.3s;
+  gap: 20px;
+}
+
+.position-title {
+  font-size: 23px;
+  font-weight: 600;
+  transition: all 0.3s;
+  color: #333333;
+}
+
+.open-positions-header:hover .position-title {
+  color: #008ccf;
+  transform: translateX(6px);
+}
+
+.open-positions-item.active .open-positions-header {
+  background-color: #008ccf;
+  transition: all 0.3s;
+  color: white;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.open-positions-item.active .open-positions-header .position-title {
+  color: white;
+  transform: translateX(0px);
+}
+
+.open-positions-item.active .open-positions-header:hover .position-title {
+  color: white;
+  transform: translateX(0px);
+}
+
+.position-detail {
+  padding: 20px;
+}
+
+/* Style for toggle icon */
+.toggle-icon {
+  width: 16px;
+  height: 16px;
+  rotate: 90deg;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Style for rotated toggle icon when item is active */
+.open-positions-item.active .toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* Style for accordion item content */
+.open-positions-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Style to show content when accordion item is active */
+.open-positions-item.active .open-positions-content {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+
+.position-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.apply-position {
+  padding: 10px 29px;
+  border-radius: 100px;
+  font-weight: 600 !important;
+  color: #333;
+  border: 1px solid #333333;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.apply-position::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 100%;
+  background-color: #00a659;
+  border-radius: 100px;
+  z-index: -1;
+  transition: all 0.3s;
+}
+
+.apply-position:hover {
+  color: white !important;
+  border: 1px solid #00a659 !important;
+}
+
+.apply-position:hover::after {
+  right: 0% !important;
+}
+
+.open-positions-item.active .open-positions-header .position-header-section .apply-position {
+  border: 1px solid white !important;
+}
+
+.open-positions-item.active .open-positions-header .position-header-section .apply-position::after {
+  background-color: white !important;
+}
+
+.open-positions-item.active .open-positions-header .position-header-section .apply-position:hover {
+  color: #333333 !important;
+}
+
+.open-positions-item.active .open-positions-header .position-header-section .apply-position:hover::after {
+  background-color: white !important;
+  color: #008ccf !important;
+}
+
+@media screen and (max-width:520px) {
+  .position-header-section {
+    align-items: baseline;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* end :: open positions style */
+.gridcls{
+display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 10px;
+
+}
