@@ -287,11 +287,20 @@
                                                         type="button" value="Add New" id="addNew" />
                                                 </div>
                                                 <div class="row y-gap-20">
-                                            <div class="col-lg-6 col-12">
+
+                                                <div class="col-lg-4 col-12">
+                                            <label class="text-16 lh-1 fw-500 text-dark-1 mb-10">Message</label>
+                                            </div>
+                                            <div class="col-lg-8 col-12">
+                                            <textarea placeholder="Enter your Message" name='message' id='message'>{{ old('message') }}</textarea>
+                                             </div>
+
+
+                                            <div class="col-lg-4 col-12">
                                                 <input type="text" name="txtcode" required id="txtcode" onBlur="valcap();" style="width:100%;" class="" placeholder="Enter Code *" autocomplete="off">
                                                 <span id="caperr"></span>
                                             </div>
-                                            <div class="col-lg-6 col-12">
+                                            <div class="col-lg-4 col-12">
                                                 <div id="captcha" style=" width:30%; float: left;    text-align: center;  margin:-4px 21px 0px 49px; color:#000;">
                                                 <div id="captcha_gen" style="background-image:url({{ asset('assets/img/icons/captcha.png') }});">
                                                 <label align="center" id="randomfield" onCopy="return false;"   style='-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none; font-size:20px; font-weight:bold; padding-top:4px;'  unselectable='on' onselectstart='return false;' onmousedown='return false;'></label>
@@ -299,6 +308,7 @@
                                                 <input type="hidden" id="txtCaptcha" name="txtCaptcha"/></div>
                                                 <img src="{{ asset('assets/img/icons/rlod.png') }}" width="22" height="22" onClick="getCaptcha();">
                                             </div>
+
                                             </div>
                                                 <div class="row y-gap-20 justify-between pt-15">
                                                     <div class="col-12">
@@ -315,14 +325,17 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12">
+                                                    <div class="row y-gap-20">
+                                                    <div class="col-6">
                                                         <button type="submit"
                                                             class="button -md -outline-purple-1 text-purple-1">Register
                                                             Now</button>
-
+                                                            </div>
+                                                            <div class="col-6">
                                                             <button type="submit"
                                                             class="button -md -outline-purple-1 text-purple-1">Register
                                                             Now and Pay Later</button>
+                                                    </div>
                                                     </div>
                                                 </div>
                                             </form>

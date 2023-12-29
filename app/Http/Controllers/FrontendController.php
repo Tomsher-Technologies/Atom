@@ -488,6 +488,7 @@ class FrontendController extends Controller
                 'course_id' => $course_id,
                 'parent_id' => ($key == 0) ? 0 : $parent_id,
                 'price' => $request->price,
+                'message' => $request->message,
                 'type' =>  $type
             ];
             
