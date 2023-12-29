@@ -91,11 +91,7 @@
                         <a href="{{ $page->button_link_2 ?? '#' }}" class="button -md -dark-1 text-white">{!! $page->btn_text2 ?? '' !!}</a>
                     </div>
                 </div>
-                <!-- <div class="col-lg-6 lg:order-1">
-            <div class="-el-2">
-                <img class="w-1/1" src="img/excellence.jpg" alt="image">
-              </div>
-            </div> -->
+                
                 <div class="col-lg-6 lg:order-1">
                     <div class="composition -type-3">
                         <div class="-el-1">

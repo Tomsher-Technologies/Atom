@@ -9441,7 +9441,7 @@ letter-spacing: 1px;
 }
 
 .bg-dark-1 {
-  background-color: var(--color-dark-1);
+  background-color: var(--color-dark-1) !important;
 }
 
 .bg-dark-2 {
