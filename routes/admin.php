@@ -142,6 +142,9 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
             Route::get('/clients', [PagesController::class, 'clientsPage'])->name('clients');
             Route::post('/store-clients', [PagesController::class, 'storeClientsPage'])->name('store-clients');
 
+            Route::get('/management', [PagesController::class, 'managementPage'])->name('management');
+            Route::post('/store-management', [PagesController::class, 'storeManagementPage'])->name('store-management');
+
             Route::get('/accreditations', [PagesController::class, 'accreditationsPage'])->name('accreditations');
             Route::post('/store-accreditations', [PagesController::class, 'storeAccreditationsPage'])->name('store-accreditations');
            
