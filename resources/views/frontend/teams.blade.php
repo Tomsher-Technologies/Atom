@@ -94,57 +94,7 @@ if($i == 1){
 </section>
 
 
-<section class="features-count-sec layout-pt-md layout-pb-md">
-    <div class="container">
-        <div class="row justify-center text-center">
-            <div class="col-auto">
-
-                <div class="sectionTitle ">
-
-                    <h2 class="sectionTitle__title text-white">We are Proud</h2>
-
-                    <p class="sectionTitle__text text-light-3">ATOM Training and Consultancy Institute LLC &
-                        ATOM Aviation Services Academy.</p>
-
-                </div>
-
-            </div>
-        </div>
-
-
-        <div data-anim-wrap class="row y-gap-30 counter__row">
-
-            <div class="col-lg-3 col-sm-6">
-                <div data-anim-child="slide-left delay-1" class="counter -type-1">
-                    <div class="counter__number">350,000+</div>
-                    <div class="counter__title">Students worldwide</div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div data-anim-child="slide-left delay-2" class="counter -type-1">
-                    <div class="counter__number">496,00+</div>
-                    <div class="counter__title">Total course views</div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div data-anim-child="slide-left delay-3" class="counter -type-1">
-                    <div class="counter__number">19,000+</div>
-                    <div class="counter__title">Five-star course reviews</div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6">
-                <div data-anim-child="slide-left delay-4" class="counter -type-1">
-                    <div class="counter__number">987,000+</div>
-                    <div class="counter__title">Students community</div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
+@include('frontend.common.proud_blue')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">
     </script>
