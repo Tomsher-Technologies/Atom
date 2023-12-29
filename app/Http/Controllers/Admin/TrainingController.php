@@ -235,6 +235,7 @@ class TrainingController extends Controller
         $course->description            = $request->course_description ?? NULL;
         $course->duration               = $request->duration ?? NULL;
         $course->price                  = $request->price ?? 0;
+        $course->video_link             = $request->video_link ?? NULL;
         $course->lang_id                = $request->language ?? NULL;
         $course->course_type_id         = $request->course_type ?? NULL;
         $course->location_id            = $request->location ?? NULL;
@@ -341,6 +342,7 @@ class TrainingController extends Controller
         $course->description            = $request->course_description ?? NULL;
         $course->duration               = $request->duration ?? NULL;
         $course->price                  = $request->price ?? 0;
+        $course->video_link             = $request->video_link ?? NULL;
         $course->lang_id                = $request->language ?? NULL;
         $course->course_type_id         = $request->course_type ?? NULL;
         $course->location_id            = $request->location ?? NULL;

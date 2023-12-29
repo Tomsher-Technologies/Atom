@@ -9,10 +9,14 @@ use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\ReelsController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ClientsController;
+use App\Http\Controllers\Admin\PopupsController;
+use App\Http\Controllers\Admin\AccreditationsController;
+use App\Http\Controllers\Admin\TeamsController;
 use App\Http\Controllers\Admin\TrainingController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\WebinarController;
 use App\Http\Controllers\Admin\ReviewsController;
+use App\Http\Controllers\Admin\CareerController;
 use App\Http\Controllers\Admin\HomeSliderController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,7 +56,11 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
         // Clients
         Route::resource('clients', ClientsController::class)->except('show');
-
+        Route::resource('popups', PopupsController::class)->except('show');
+        // Accreditations
+        Route::resource('accreditations', AccreditationsController::class)->except('show');
+// Teams
+        Route::resource('teams', TeamsController::class)->except('show');
         // Services
         Route::resource('services', ServiceController::class)->except('show');
 
@@ -87,7 +95,7 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
         });
 
         Route::resource('blogs', BlogController::class)->except('show');
-
+        Route::resource('careers', CareerController::class)->except('show');
         Route::resource('webinars', WebinarController::class)->except('show');
         Route::get('/webinar-bookings/{id}', [WebinarController::class, 'bookings'])->name('webinar-bookings');
 
@@ -133,6 +141,9 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
             Route::get('/clients', [PagesController::class, 'clientsPage'])->name('clients');
             Route::post('/store-clients', [PagesController::class, 'storeClientsPage'])->name('store-clients');
+
+            Route::get('/accreditations', [PagesController::class, 'accreditationsPage'])->name('accreditations');
+            Route::post('/store-accreditations', [PagesController::class, 'storeAccreditationsPage'])->name('store-accreditations');
            
             Route::get('/contact', [PagesController::class, 'contactPage'])->name('contact');
             Route::post('/store-contact', [PagesController::class, 'storeContactPage'])->name('store-contact');
@@ -160,6 +171,8 @@ Route::group(['prefix' => env('ADMIN_PREFIX', 'admin'), 'as' => 'admin.'], funct
 
             Route::get('/download', [PagesController::class, 'downloadPage'])->name('download');
             Route::post('/store-download', [PagesController::class, 'storeDownloadPage'])->name('store-download');
+
+            Route::get('/certificate', [PagesController::class, 'certificatePage'])->name('certificate');
         });
 
         Route::resource('roles', RoleController::class);
