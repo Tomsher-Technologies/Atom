@@ -92,6 +92,8 @@
                         <a href="{{ route('privacy') }}">Privacy Policy</a>
                         <a href="{{ route('terms') }}">Terms of Use</a>
                         <a href="{{ route('contact') }}">Contact Us</a>
+                        <a href="{{ route('certificate') }}">Quality Certificate</a>
+                        <a href="{{ route('accreditations') }}">Accreditations</a>
                     </div>
                 </div>
 
@@ -100,6 +102,7 @@
         </div>
 
     </div>
+    
 </footer>
 
 <div class="bg-blue-1">
@@ -125,3 +128,7 @@
         </div>
     </div>
 </div>
+
+<a href="https://wa.me/+971528407486" class="float" target="_blank">
+      <i class="fa fa-whatsapp my-float"></i>
+    </a>

@@ -19,8 +19,11 @@ Route::get('/autocomplete-search', [FrontendController::class, 'autocompleteSear
 Route::get('/autocomplete-course', [FrontendController::class, 'ajaxCourses'])->name('autocomplete-course');
 
 Route::get('/clients', [FrontendController::class, 'clients'])->name('clients');
+Route::get('/accreditations', [FrontendController::class, 'accreditations'])->name('accreditations');
+Route::get('/teams', [FrontendController::class, 'teams'])->name('teams');
 Route::get('/mission-vision', [FrontendController::class, 'missionVision'])->name('mission-vision');
 Route::get('/who-we-are', [FrontendController::class, 'whoWeAre'])->name('who-we-are');
+Route::get('/careerlisting', [FrontendController::class, 'careerlisting'])->name('careerlisting');
 Route::get('/career', [FrontendController::class, 'career'])->name('career');
 Route::post('/store-career', [FrontendController::class, 'storeCareer'])->name('store-career');
 Route::get('/contact-us', [FrontendController::class, 'contact_us'])->name('contact');
@@ -35,6 +38,9 @@ Route::get('/trainings', [FrontendController::class, 'trainings'])->name('traini
 Route::get('/trainings/{slug}', [FrontendController::class, 'trainingCourses'])->name('courses');
 Route::get('/course/{slug}', [FrontendController::class, 'courseDetails'])->name('course-details');
 
+//DS
+Route::get('/training-categories/{slug}', [FrontendController::class, 'trainingCategories'])->name('training-categories');
+
 Route::get('/course-apply/{slug}', [FrontendController::class, 'courseApply'])->name('course-apply');
 Route::post('/apply-course', [FrontendController::class, 'storeCourseApply'])->name('apply-course');
 
@@ -47,7 +53,7 @@ Route::get('/blog/{slug}', [FrontendController::class, 'blogDetails'])->name('bl
 
 Route::get('/privacy', [FrontendController::class, 'privacy'])->name('privacy');
 Route::get('/terms', [FrontendController::class, 'terms'])->name('terms');
-
+Route::get('/certificate', [FrontendController::class, 'certificate'])->name('certificate');
 Route::get('/downloads', [FrontendController::class, 'downloads'])->name('downloads');
 Route::post('/download-pdf', [FrontendController::class, 'downloadPdf'])->name('download-pdf');
 
