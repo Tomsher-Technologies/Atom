@@ -42,7 +42,7 @@
                     @foreach ($accreditations as $cl)
                         <div data-anim-child="slide-up delay-1" class="col-lg-3 col-md-3 col-sm-3 col-3">
                             <div class="d-flex justify-center items-center px-4">
-                                <img class="w-1/1" src="{{ $cl->getImage() }}" alt="clients image">
+                                <img class="w-1/1 w-100 accls" src="{{ $cl->getImage() }}" alt="clients image">
                             </div>
                         </div>
                     @endforeach
@@ -51,6 +51,10 @@
             </div>
         </div>
     </section>
-
+<style>
+.accls{
+    max-width:1920px;
+}
+    </style>
     @include('frontend.common.proud_blue')
 @endsection

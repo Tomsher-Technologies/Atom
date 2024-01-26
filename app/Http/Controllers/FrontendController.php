@@ -141,7 +141,7 @@ class FrontendController extends Controller
     
     public function teams()
     {
-        $page = Pages::with(['seo'])->where('page_name','teams')->first();
+        $page = Pages::with(['seo'])->where('page_name','management')->first();
         $this->loadSEO($page);
         $teams =  Teams::where('status',1)->orderBy('sort_order','asc')->get();
         return view('frontend.teams',compact('page','teams'));
