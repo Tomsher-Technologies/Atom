@@ -39,6 +39,10 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use App\Mail\ContactEnquiry;
 use App\Mail\CareerEnquiry;
 use App\Models\GeneralSettings;
+use App\Mail\WebinarRegister;
+use App\Mail\WebinarRegisterAdmin;
+use App\Mail\CourseRegister;
+use App\Mail\CourseRegisterAdmin;
 use Illuminate\Support\Facades\URL;
 use Storage;
 use Validator;
@@ -283,7 +287,8 @@ class FrontendController extends Controller
     }
   
     public function trainingcategories(Request $request)
-    {   $slug = $request->slug;
+    {
+        $slug = $request->slug;
         $page = Pages::with(['seo'])->where('page_name','training-categories')->first();
         $this->loadSEO($page);
         $cat = TrainingCategories::where('status',1)->where('slug',$slug)->first();
@@ -302,7 +307,7 @@ class FrontendController extends Controller
     {
         $page = Pages::with(['seo'])->where('page_name','programs')->first();
         $this->loadSEO($page);
-        $categories = TrainingCategories::with(['courses'])->where('status',1)->orderBy('sort_order','asc')->paginate(20);
+        $categories = TrainingCategories::with(['courses'])->where('status',1)->where('parent_id','!=',0)->orderBy('sort_order','asc')->paginate(20);
         return view('frontend.training_categories', compact('page','categories'));
     }
 
@@ -381,6 +386,11 @@ class FrontendController extends Controller
             $book->email = $email;
             $book->phone = $phone;
             $book->save();
+
+            $webinar = Webinars::find($id);
+            Mail::to($email)->queue(new WebinarRegister($webinar,$book));
+            Mail::to(env('MAIL_ADMIN'))->queue(new WebinarRegisterAdmin($webinar,$book));
+
             echo '<span style="color: #00a659;font-weight: 700;">Successfully registered</span>';
         }
     }
@@ -478,6 +488,9 @@ class FrontendController extends Controller
 
         $users = $request->users;
         $parent_id = 0;
+        $parent_email = $parent_name = '';
+        $count = 0;
+        $parent = [];
         foreach ($users as $key => $user) {
             $data = [
                 'name' => $user['name'],
@@ -495,8 +508,27 @@ class FrontendController extends Controller
             $registration = CourseRegistrations::create($data);
             if($key == 0){
                 $parent_id = $registration->id;
+                $parent_email = $user['email'];
+                $parent_name = $user['name'];
+                $parent = $data;
             }
+            $count++;
         }
+        
+        $course = TrainingCourses::find($course_id);
+        $det = [
+            'name'=>$parent_name,
+            'count'=>$count
+        ];
+
+        $parent['count'] = $count;
+
+        if($parent_email != ''){
+            Mail::to($parent_email)->queue(new CourseRegister($course,$det));
+        }
+        
+        Mail::to(env('MAIL_ADMIN'))->queue(new CourseRegisterAdmin($course, $parent));
+
         return redirect()->back()->with('status', '<span style="color: #00a659;font-weight: 700;">Successfully registered</span>');
     }
 
